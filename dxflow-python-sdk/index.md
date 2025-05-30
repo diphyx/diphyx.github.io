@@ -55,5 +55,5 @@ Proprietary – © DiPhyX Inc.
 ## More Info
 
 * [DiPhyX Website](https://diphyx.com)
-* [dxflow Docs (Coming Soon)](https://dxflow.org/docs)
-* Contact: `hello@diphyx.com`
+* [dxflow Website (Coming Soon)](https://dxflow.ai)
+* Contact: `info@diphyx.com`
