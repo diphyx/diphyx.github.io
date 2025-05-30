@@ -33,11 +33,11 @@ d       4096 2025-05-05 23:26:22 transfer
 -     128229 2025-01-16 23:53:12 screenshot.png
 ```
 ### Methods:
-- **list(path="/", recursive=False, return_info=False)**: Lists storage items at the specified path.
-- **ls(path="/", recursive=False)**: Alias for the `list()` method.
-- **upload(src, dst)**: Uploads a file to the storage using the TUS protocol.
-- **download(src, dst, create_dir=True)**: Downloads a file from the storage.
-- **mkdir(path)**: Creates a directory in the storage.
-- **delete(path)**: Deletes a file or directory from the storage.
-- **copy(src, dst)**: Copies a file or directory within the storage.
-- **move(src, dst)**: Moves a file or directory within the storage.
+- *`list(path="/", recursive=False, return_info=False)`*: Lists storage items at the specified path.
+- *`ls(path="/", recursive=False)`*: Alias for the `list()` method.
+- *`upload(src, dst)`*: Uploads a file to the storage using the TUS protocol.
+- *`download(src, dst, create_dir=True)`*: Downloads a file from the storage.
+- *`mkdir(path)`*: Creates a directory in the storage.
+- *`delete(path)`*: Deletes a file or directory from the storage.
+- *`copy(src, dst)`*: Copies a file or directory within the storage.
+- *`move(src, dst)`*: Moves a file or directory within the storage.

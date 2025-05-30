@@ -59,48 +59,48 @@ Methods:
 The `Project` class represents a project in the DXFlow SDK. It provides methods to interact with and manage the project's containers, services, templates, and status.
 
 #### Attributes:
-- `name`: The name of the project.
-- `date`: The creation date of the project.
-- `services`: A list of services associated with the project.
-- `containers`: A list of containers within the project.
-- `edges`: Connections between containers or services.
-- `compose`: Docker Compose configuration for the project.
-- `templates`: Templates used to define the project structure.
+- *`name`*: The name of the project.
+- *`date`*: The creation date of the project.
+- *`services`*: A list of services associated with the project.
+- *`containers`*: A list of containers within the project.
+- *`edges`*: Connections between containers or services.
+- *`compose`*: Docker Compose configuration for the project.
+- *`templates`*: Templates used to define the project structure.
 
 
 #### Methods:
 
-- `detail(update_data=True, print_info=False)`:
+- *`detail(update_data=True, print_info=False)`*:
     Retrieves and optionally updates the project's details.
 
-- `status()`:
+- *`status()`*:
     Returns the current status of the project based on its containers.
 
-- `list_containers(print_info=True, return_info=False)`:
+- *`list_containers(print_info=True, return_info=False)`*:
     Lists all containers in the project and optionally returns their details.
 
-- `logs(container_id=None, print_info=True, realtime=False, return_info=False)`:
+- *`logs(container_id=None, print_info=True, realtime=False, return_info=False)`*:
     Retrieves logs for the project's containers. Supports real-time log streaming.
 
-- `realtime_logs(container_id=None, time_interval=1)`:
+- *`realtime_logs(container_id=None, time_interval=1)`*:
     Streams real-time logs for a running container.
 
-- `change_status(status: CommandStatus)`:
+- *`change_status(status: CommandStatus)`*:
     Changes the status of the project (e.g., start, stop, pause, terminate).
 
-- `start()`:
+- *`start()`*:
     Starts the project.
 
-- `stop()`:
+- *`stop()`*:
     Stops the project.
 
-- `pause()`:
+- *`pause()`*:
     Pauses the project.
 
-- `unpause()`:
+- *`unpause()`*:
     Unpauses the project.
 
-- `terminate()`:
+- *`terminate()`*:
     Terminates the project.
 
 #### Example Usage:

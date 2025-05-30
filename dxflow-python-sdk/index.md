@@ -50,10 +50,10 @@ pip install dxflow
 
 ## License
 
-Proprietary – © DiPhyX Inc.
+Proprietary – © DiPhyx Inc.
 
 ## More Info
 
-* [DiPhyX Website](https://diphyx.com)
+* [DiPhyx Website](https://diphyx.com)
 * [dxflow Website (Coming Soon)](https://dxflow.ai)
 * Contact: `info@diphyx.com`

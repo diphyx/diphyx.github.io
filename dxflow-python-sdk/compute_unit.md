@@ -39,22 +39,21 @@ demo_unit = compute_manager.get_unit(name="Demo")
 ```
 
 ### Methods:
-
-- **`detail()`**: Retrieves detailed information about the compute unit.
-- **`start()`**: Starts the compute unit.
-- **`stop()`**: Stops the compute unit.
-- **`troubleshoot()`**: Troubleshoots the compute unit.
-- **`terminate()`**: Terminates the compute unit.
-- **`stats()`**: Retrieves statistics (CPU, memory, disk) about the compute unit.
-- **`get_status()`**: Returns the current status of the compute unit (e.g., running, stopped, terminated).
-- **`create_project(project_name, template)`**: Creates a project within the compute unit.
+- *`detail()`*: Retrieves detailed information about the compute unit.
+- *`start()`*: Starts the compute unit.
+- *`stop()`*: Stops the compute unit.
+- *`troubleshoot()`*: Troubleshoots the compute unit.
+- *`terminate()`*: Terminates the compute unit.
+- *`stats()`*: Retrieves statistics (CPU, memory, disk) about the compute unit.
+- *`get_status()`*: Returns the current status of the compute unit (e.g., running, stopped, terminated).
+- *`create_project(project_name, template)`*: Creates a project within the compute unit.
 
 ---
 
 #### Properties:
-- **`storage`**: The storage system associated with the compute unit.
-- **`project`**: The project manager for handling projects within the compute unit.
-- **`container`**: The container manager for managing containers within the compute unit.
+- *`storage`*: The storage system associated with the compute unit.
+- *`project`*: The project manager for handling projects within the compute unit.
+- *`container`*: The container manager for managing containers within the compute unit.
 
 Each compute unit has its own `UnitStorage`, `UnitContainersManager`, and `UnitProjectsManager`, which can be accessed through `self.storage`, `self.containers`, and `self.projects`, respectively. These components provide specialized functionality for managing storage, containers, and projects.
 
