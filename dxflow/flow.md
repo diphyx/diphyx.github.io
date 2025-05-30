@@ -12,7 +12,7 @@ To use the flow module, you need to import it and create a flow manager.
 ```python
 from dxflow.session import Session
 
-session = Session(username="your_username", password="your_password")
+session = Session(username="your@email.com", password="your_password")
 flow_register = session.get_flow_registery_manager()
 flow_register.list(filters={"tags": "Molecular Dynamics"})
 ```
@@ -22,22 +22,20 @@ Name    | Pointer                        | Tags                           | Stat
 Boltz-1 | 7ea2b574-e962-4f18-bb54-7e233c | Molecular Dynamics, Biomolecul | PUBLISHED | True    
 ```
 
-### Methods:
-
 #### Methods:
+
 - **publish(name, description=None, properties=None, tags=None, arch="AMD64", color=None, icon=None, logo=None, image=None, logo_url=None, image_url=None)**: Publishes a new flow package.
 - **update_flow_package(flow_pointer, update_data)**: Updates an existing flow package.
 - **update_template(flow_pointer, template_data)**: Updates the template of a flow package.
 - **get(flow_pointer)**: Retrieves a flow package.
-- **get_by_flow_name(name, namespace_pointer, namespace_secret, api_url=NAMESPACE_API_URL)**: Retrieves a flow package by name.
+- **get_by_flow_name(name)**: Retrieves a flow package by name.
 - **get_by_name(name, update_list=True)**: Retrieves a flow package by name within the current instance.
 - **get_list(filters=None)**: Retrieves a list of flow packages.
 - **list(filters={"tags": "AMD64", "verified": True}, table=True, return_info=False)**: Lists flow packages with optional filters and table display.
-- **available_flows(name, namespace_pointer, namespace_secret, api_url=NAMESPACE_API_URL)**: Lists available flows in a namespace.
+- **available_flows(name)**: Lists available flows in a namespace.
 - **activate(flow_pointer)**: Activates a flow package.
 - **deactivate(flow_pointer)**: Deactivates a flow package.
 - **get_flow_pointer(name=None, update_list=True)**: Retrieves the pointer of a flow package by name.
-- **_handle_response(response, table=False, success_message=None)**: Handles API responses and formats them for display.
 
 
 ### `Flow` Class

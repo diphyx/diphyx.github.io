@@ -11,7 +11,7 @@ To use the storage module, you need to import it and create a storage client.
 ```python
 from dxflow.session import Session
 
-session = Session(username="your_username", password="your_password")
+session = Session(username="your@email.com", password="your_password")
 compute_manager = session.get_compute_manager()
 
 compute_unit = compute_manager.get_unit(name="Demo")
@@ -41,4 +41,3 @@ d       4096 2025-05-05 23:26:22 transfer
 - **delete(path)**: Deletes a file or directory from the storage.
 - **copy(src, dst)**: Copies a file or directory within the storage.
 - **move(src, dst)**: Moves a file or directory within the storage.
-

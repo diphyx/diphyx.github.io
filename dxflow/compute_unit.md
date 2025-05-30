@@ -39,7 +39,6 @@ demo_unit = compute_manager.get_unit(name="Demo")
 ```
 
 ### Methods:
-- **`__init__(user_pointer, user_secret, info, namespace_pointer=None, namespace_secret=None, namespace_api_url=NAMESPACE_API_URL, initialize_tools=False)`**: Initializes a compute unit with user credentials and unit details.
 
 - **`detail()`**: Retrieves detailed information about the compute unit.
 - **`start()`**: Starts the compute unit.
