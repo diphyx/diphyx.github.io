@@ -22,14 +22,14 @@ jobs:
       run: |
         pip install -r requirements.txt
 
-    - name: Build docs
+    - name: Build Jupyter Book
       run: |
-        jupyter-book build docs
+        jupyter-book build .
 
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
       with:
-        path: docs/_build/html
+        path: _build/html
 
   deploy:
     needs: build
