@@ -1,0 +1,16 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: index
+
+chapters:
+- file: intro
+- file: basic_definitions
+- file: dxflow/index
+  sections:
+  - file: dxflow/getting_started
+  - file: dxflow/compute_unit
+  - file: dxflow/projects
+  - file: dxflow/storage
+  - file: dxflow/flow
