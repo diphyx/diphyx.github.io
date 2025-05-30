@@ -1,3 +1,4 @@
+### Welcome
 Welcome to DiPhyx – where the complex world of scientific computing meets user-friendly, end-to-end cloud solutions.
 
 At DiPhyx, we're driven by a simple yet profound mission: to revolutionize scientific discovery. Our cloud-computing platform isn't just a tool; it's a gateway to unlocking the full potential of computational research and data analysis.
