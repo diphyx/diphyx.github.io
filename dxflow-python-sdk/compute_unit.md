@@ -16,7 +16,7 @@ compute_manager = session.get_compute_manager()
 compute_manager.list()
 ``` 
 
-```plaintext
+```markdown
 Name        | Status     | IP            | Cluster Type         | CPU | Memory(GB) | Disk                        
 ------------+------------+---------------+----------------------+-----+------------+-----------------------------
 Demo        | READY      | 54.211.250.47 | AWS:g6.2xlarge       | 8   | 32         | {boot: 512, volume: 256}    

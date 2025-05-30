@@ -18,7 +18,7 @@ compute_unit = compute_manager.get_unit(name="Demo")
 
 compute_unit.storage.ls() # an ls like command to list files in the storage
 ```
-```plaintext
+```markdown
 d       4096 2025-02-08 03:51:41 .dx
 d       4096 2024-12-12 10:07:47 .ipynb_checkpoints
 d       4096 2024-06-25 07:00:17 simulation_outputs

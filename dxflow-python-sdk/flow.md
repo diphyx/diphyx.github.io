@@ -16,7 +16,7 @@ session = Session(username="your@email.com", password="your_password")
 flow_register = session.get_flow_registery_manager()
 flow_register.list(filters={"tags": "Molecular Dynamics"})
 ```
-```plaintext
+```markdown
 Name    | Pointer                        | Tags                           | Status    | Verified
 --------+--------------------------------+--------------------------------+-----------+---------
 Boltz-1 | 7ea2b574-e962-4f18-bb54-7e233c | Molecular Dynamics, Biomolecul | PUBLISHED | True    

@@ -22,7 +22,7 @@ compute_unit = compute_manager.get_unit(name="Demo")
 projects_manager = compute_unit.projects 
 compute_unit.projects.list() # or projects_manager.list() to be explicit
 ```
-```plaintext
+```markdown
 
 Name    | Creation date | Status   
 --------+---------------+----------

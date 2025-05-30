@@ -1,6 +1,7 @@
+![dxflow Logo](dxflow.png)
 # dxflow Python SDK
 
-**dxflow** is a powerful, domain-agnostic platform for executing, managing, and productionizing scientific models, from bioinformatics and cheminformatics to computational fluid dynamics and digital physics. Think of it as the **MLflow** for scientific computing.
+**dxflow** is a powerful, domain-agnostic platform for executing, managing, and productionizing scientific models, from bioinformatics and cheminformatics to computational fluid dynamics and digital physics. 
 
 Built by the DiPhyX team, dxflow is engineered to simplify the entire lifecycle of scientific workflows, making compute-intensive research reproducible, scalable, and accessible, whether on local machines or in the cloud.
 

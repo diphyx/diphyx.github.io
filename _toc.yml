@@ -7,10 +7,10 @@ root: index
 chapters:
 - file: intro
 - file: basic_definitions
-- file: dxflow/index
+- file: dxflow-python-sdk/index
   sections:
-  - file: dxflow/getting_started
-  - file: dxflow/compute_unit
-  - file: dxflow/projects
-  - file: dxflow/storage
-  - file: dxflow/flow
+  - file: dxflow-python-sdk/getting_started
+  - file: dxflow-python-sdk/compute_unit
+  - file: dxflow-python-sdk/projects
+  - file: dxflow-python-sdk/storage
+  - file: dxflow-python-sdk/flow
