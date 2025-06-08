@@ -1,5 +1,6 @@
 # Introduction to DiPhyx
 
+![story](images/story.svg)
 **DiPhyx (Digital Physics eXtended)** is a cloud-agnostic platform that specializes in scientific computing. It seamlessly integrates with a wide array of scientific software packages, offering a cohesive solution for managing and executing computational pipelines.
 
 From molecular dynamics simulations with Amber to computational fluid dynamics with OpenFoam, from Ansys Fluent simulations to GROMACS for molecular dynamics, DiPhyx supports and simplifies your scientific endeavors.
