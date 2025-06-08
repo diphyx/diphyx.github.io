@@ -14,3 +14,9 @@ chapters:
   - file: dxflow-python-sdk/projects
   - file: dxflow-python-sdk/storage
   - file: dxflow-python-sdk/flow
+- file: case_studies/index
+  sections:
+  - file: case_studies/boltz/index
+    sections:
+    - file: case_studies/boltz/FGFR Kinase Inhibitor/Modeling an FGFR Kinase Inhibitor with Boltz-1.ipynb
+    - file: case_studies/boltz/FGFR Kinase Inhibitor/Remote Modeling of FGFR Kinase Inhibitors with Boltz-1 Using dxflow.ipynb
