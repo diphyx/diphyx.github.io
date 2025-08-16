@@ -52,8 +52,18 @@ pip install dxflow
 
 Proprietary – © DiPhyx Inc.
 
+## Documentation
+
+* [Getting Started](getting_started.md) - Quick start guide and authentication
+* [Compute Units](compute_unit.md) - Managing computational resources
+* [Storage](storage.md) - File and data management
+* [Flows](flow.md) - Creating and managing workflows
+* [Projects](projects.md) - Running and monitoring projects
+* [Examples](examples.md) - Complete examples and use cases
+
 ## More Info
 
 * [DiPhyx Website](https://diphyx.com)
 * [dxflow Website (Coming Soon)](https://dxflow.ai)
+* [GitHub Repository](https://github.com/DiPhyx-Inc/dxflow)
 * Contact: `info@diphyx.com`

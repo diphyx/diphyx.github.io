@@ -6,12 +6,12 @@ Use one or more units to manage computational workloads on a chosen platform. Th
 
 The `ComputeManager` class is responsible for managing compute units. It provides methods to create, list, update, and retrieve compute units.
 
-How to get is though `Session.get_compute_manager()`
+How to get it through `Session.get_compute_manager()`
 
 ```python
-from dxflow.session import Session
+from dxflow import Session
 
-session = Session(username="your_username", password="your_password")
+session = Session(email="your_email@example.com", password="your_password")
 compute_manager = session.get_compute_manager()
 compute_manager.list()
 ``` 

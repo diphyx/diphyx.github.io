@@ -13,9 +13,9 @@ This class is typically accessed through a compute unit's project manager, allow
 
     
 ```python
-from dxflow.session import Session
+from dxflow import Session
 
-session = Session(username="your@email.com", password="your_password")
+session = Session(email="your@email.com", password="your_password")
 compute_manager = session.get_compute_manager()
 
 compute_unit = compute_manager.get_unit(name="Demo")
@@ -106,9 +106,9 @@ The `Project` class represents a project in the DXFlow SDK. It provides methods 
 #### Example Usage:
 
 ```python
-from dxflow.session import Session
+from dxflow import Session
 
-session = Session(username="your@email.com", password="your_password")
+session = Session(email="your@email.com", password="your_password")
 compute_manager = session.get_compute_manager()
 compute_unit = compute_manager.get_unit(name="Demo")
 project = compute_unit.projects.get("example_project")

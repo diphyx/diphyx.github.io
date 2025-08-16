@@ -1,18 +1,27 @@
 # Flow
 
-This is a concept we use at dxflow to describe one or more software tools or containers that are configured to work together to accomplish a specific task. A flow can be as simple as a single container running a script or as complex as a multi-container application with multiple services and dependencies. We use [docker-compose](https://docs.docker.com/compose/) to define flows, allowing for easy management and deployment of the containers involved.
+## Overview
 
-Every `namespace` in DiPhyx has its own flow registery, which is a collection of flows that can be used to create projects. The flow registry is managed by the `FlowManager` class, which provides methods to create, retrieve, update, and delete flows.
+A **Flow** in dxflow represents one or more software tools or containers that are configured to work together to accomplish a specific scientific computing task. Flows can range from simple single-container scripts to complex multi-container applications with multiple services and dependencies. We use [docker-compose](https://docs.docker.com/compose/) style definitions for flows, enabling easy management and deployment of containerized scientific workflows.
 
-### `FlowRegisteryManager` Class
-## Usage
+## Key Concepts
 
-To use the flow module, you need to import it and create a flow manager.
+- **Flow Definition**: A template that describes containers, their configurations, and relationships
+- **Flow Registry**: A collection of flows available in your namespace
+- **Variables**: Configurable parameters that customize flow behavior
+- **Profiles**: Different execution configurations for the same flow
+- **Projects**: Instances of flows running on compute units
+
+## `FlowRegisteryManager` Class
+
+The `FlowRegisteryManager` manages all flows in your namespace, providing methods to publish, retrieve, update, and manage flow packages.
+
+### Usage
 
 ```python
-from dxflow.session import Session
+from dxflow import Session
 
-session = Session(username="your@email.com", password="your_password")
+session = Session(email="your@email.com", password="your_password")
 flow_register = session.get_flow_registery_manager()
 flow_register.list(filters={"tags": "Molecular Dynamics"})
 ```
@@ -37,8 +46,54 @@ Boltz-1 | 7ea2b574-e962-4f18-bb54-7e233c | Molecular Dynamics, Biomolecul | PUBL
 - *`deactivate(flow_pointer)`*: Deactivates a flow package.
 - *`get_flow_pointer(name=None, update_list=True)`*: Retrieves the pointer of a flow package by name.
 
+### Examples
 
-### `Flow` Class
+#### Publishing a New Flow
+
+```python
+# Define a flow template (docker-compose style)
+template = """
+version: '3.8'
+services:
+  analyzer:
+    image: python:3.9
+    command: python analyze.py
+    environment:
+      - THREADS=${THREADS:-4}
+      - INPUT_FILE=${INPUT_FILE}
+    volumes:
+      - ./data:/data
+"""
+
+# Publish the flow
+flow_register.publish(
+    name="DataAnalyzer",
+    description="Analyzes scientific data using Python",
+    properties={"template": template},
+    tags=["Data Analysis", "Python"],
+    arch="AMD64"
+)
+```
+
+#### Filtering and Finding Flows
+
+```python
+# Find flows by tags
+molecular_flows = flow_register.list(
+    filters={"tags": "Molecular Dynamics", "verified": True}
+)
+
+# Get a specific flow by name
+flow = flow_register.get_by_name("Boltz-1")
+
+# Get flow pointer for creating projects
+flow_pointer = flow_register.get_flow_pointer(name="GROMACS")
+```
+
+
+## `Flow` Class
+
+The `Flow` class represents an individual flow package with its template, variables, and metadata.
 #### Methods:
 
 - *`__init__(name, template, pointer=None, user={}, description=None, properties={}, tags=[], environments=[], visibility="PRIVATE", status=None, created_at=None, updated_at=None, state=None, verified=None)`*: Initializes a Flow object with the provided attributes. Raises `ValueError` if required fields are missing or invalid values are provided for `visibility` or `status`.
@@ -52,3 +107,131 @@ Boltz-1 | 7ea2b574-e962-4f18-bb54-7e233c | Molecular Dynamics, Biomolecul | PUBL
 - *`display_variables(table=True)`*: Displays the variables in the flow's template along with their descriptions, hints, default values, and options. Supports table or JSON format.
 
 - *`__str__()`*: Returns a JSON string representation of the Flow object, including all its attributes.
+
+### Flow Examples
+
+#### Creating a Project from a Flow
+
+```python
+# Get a flow
+flow = flow_register.get_by_name("GROMACS")
+
+# Display available variables
+flow.display_variables()
+
+# Create a project with custom variables
+compute_unit = compute_manager.get_unit(name="GPU-Unit")
+project = flow.create_project(
+    project_name="protein-simulation",
+    variables={
+        "PROTEIN_FILE": "1AKI.pdb",
+        "SIMULATION_TIME": "100",
+        "TEMPERATURE": "300"
+    },
+    compute_unit=compute_unit
+)
+```
+
+#### Working with Flow Variables
+
+```python
+# Get flow variables
+variables = flow.get_variables()
+
+# Display in table format
+flow.display_variables(table=True)
+
+# Display as JSON
+flow.display_variables(table=False)
+```
+
+#### Generating Docker Compose Configuration
+
+```python
+# Generate compose file with variables
+compose_yaml = flow.generate_compose(
+    variables={
+        "CPU_CORES": "8",
+        "MEMORY": "16G",
+        "INPUT_PATH": "/data/input"
+    },
+    project_name="my-analysis"
+)
+
+# Save to file
+import yaml
+with open("docker-compose.yml", "w") as f:
+    yaml.dump(compose_yaml, f)
+```
+
+## Common Flow Patterns
+
+### Single Container Flow
+
+```yaml
+version: '3.8'
+services:
+  main:
+    image: scientific/tool:latest
+    command: ${COMMAND}
+    environment:
+      - PARAM1=${PARAM1}
+    volumes:
+      - ./input:/input
+      - ./output:/output
+```
+
+### Multi-Container Pipeline
+
+```yaml
+version: '3.8'
+services:
+  preprocessor:
+    image: preprocess:latest
+    command: preprocess --input /data/raw --output /data/processed
+    volumes:
+      - ./data:/data
+  
+  analyzer:
+    image: analyze:latest
+    depends_on:
+      - preprocessor
+    command: analyze --input /data/processed --output /data/results
+    volumes:
+      - ./data:/data
+  
+  visualizer:
+    image: visualize:latest
+    depends_on:
+      - analyzer
+    command: visualize --input /data/results
+    volumes:
+      - ./data:/data
+    ports:
+      - "8080:8080"
+```
+
+### GPU-Enabled Flow
+
+```yaml
+version: '3.8'
+services:
+  gpu_compute:
+    image: nvidia/cuda:11.0-runtime
+    runtime: nvidia
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+    command: python gpu_simulation.py
+    volumes:
+      - ./models:/models
+```
+
+## Best Practices
+
+1. **Use Variables**: Make flows configurable with variables for reusability
+2. **Tag Appropriately**: Use descriptive tags for easy discovery
+3. **Document Variables**: Provide clear descriptions and defaults
+4. **Version Control**: Track flow templates in version control
+5. **Test Locally**: Test flows with docker-compose before publishing
+6. **Resource Limits**: Define resource constraints for predictable behavior
+7. **Health Checks**: Include health checks for service reliability
