@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Private AI for your team, on a machine you control · DiPhyx</title>
+  <meta name="description" content="Open WebUI and dxflow give every person on the team a ChatGPT-style page and an API key, backed by open models on a GPU you rent by the hour or already own. Nothing you type leaves the machine.">
+  <link rel="canonical" href="https://diphyx.github.io/stories/private-ai-for-your-team/">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/assets/favicon.png" type="image/png">
+  <link rel="alternate" type="application/rss+xml" title="DiPhyx Blog" href="/feed.xml">
+  <meta property="og:site_name" content="DiPhyx Blog">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Private AI for your team, on a machine you control">
+  <meta property="og:description" content="Open WebUI and dxflow give every person on the team a ChatGPT-style page and an API key, backed by open models on a GPU you rent by the hour or already own. Nothing you type leaves the machine.">
+  <meta property="og:url" content="https://diphyx.github.io/stories/private-ai-for-your-team/">
+  <meta property="og:image" content="https://diphyx.github.io/assets/preview.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=SUSE:wght@400;500;600;700;800&family=SUSE+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/style.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Private AI for your team, on a machine you control","description":"Open WebUI and dxflow give every person on the team a ChatGPT-style page and an API key, backed by open models on a GPU you rent by the hour or already own. Nothing you type leaves the machine.","datePublished":"2026-09-15T12:00:00.000Z","author":[{"@type":"Person","name":"Babak Goshayeshi"}],"publisher":{"@type":"Organization","name":"DiPhyx"},"mainEntityOfPage":"https://diphyx.github.io/stories/private-ai-for-your-team/","image":"https://diphyx.github.io/assets/covers/private-ai.svg"}</script>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="/">
+        <img class="mark" src="/assets/mark.svg" alt="" width="28" height="28">
+        <span class="brand-name">DiPhyx</span>
+        <span class="brand-sep" aria-hidden="true">/</span>
+        <span class="brand-section">Blog</span>
+      </a>
+      <nav class="site-nav" aria-label="Site">
+        <a href="/" aria-current="page">Blog</a><a href="https://diphyx.com" target="_blank" rel="noopener">DiPhyx</a><a href="https://dxflow.ai" target="_blank" rel="noopener">dxflow</a><a href="https://github.com/diphyx" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+      <a class="button" href="https://diphyx.com" target="_blank" rel="noopener">Get a machine</a>
+    </div>
+  </header>
+  <main>
+
+    <article class="post">
+      <header class="post-head">
+        <div class="wrap narrow">
+          <a class="eyebrow" href="/#guides">Guides</a>
+          <h1>Private AI for your team, on a machine you control</h1>
+          <p class="post-subtitle">Open WebUI and dxflow give every person on the team a ChatGPT-style page and an API key, backed by open models on a GPU you rent by the hour or already own. Nothing you type leaves the machine.</p>
+          <div class="post-meta">
+            <time datetime="2026-09-15">September 15, 2026</time>
+            <span aria-hidden="true">·</span>
+            <span>11 min read</span>
+          </div>
+
+    <div class="authors">
+
+        <div class="author">
+          <span class="avatar" aria-hidden="true">BG</span>
+          <div class="author-text">
+            <span class="author-name">Babak Goshayeshi</span>
+            <span class="author-role">DiPhyx</span>
+          </div>
+        </div>
+    </div>
+        </div>
+      </header>
+      <div class="wrap narrow"><img class="post-hero" src="/assets/covers/private-ai.svg" alt="" width="1200" height="750"></div>
+      <div class="wrap narrow prose">
+<p>Everyone on your team is already using an AI assistant. The question is whose server the conversation lands on.</p>
+<p>For a lot of work that does not matter. For the rest, it matters a great deal: a draft contract, a customer&#39;s export, a patient cohort, an unreleased design, a codebase under NDA. The convenient path sends all of it to a third party&#39;s cloud, under a privacy policy you did not write and cannot audit. The usual alternative is to ban the tools, which means people use them anyway from a personal account.</p>
+<p>There is a third path. Run the model yourself, on a machine you control, and put a proper front door in front of it: accounts, groups, per-model permissions, personal API keys and an audit log. Give the team a URL. That is what this post walks through, and it takes one command.</p>
+<p>The pieces:</p>
+<ul>
+<li><strong>Open WebUI</strong> is the open-source chat interface most people would recognise from the commercial products. It supports accounts and roles, groups, per-model access, document upload with retrieval, and an OpenAI-compatible API with a key per user.</li>
+<li><strong>Ollama</strong> is the model server. It pulls open models such as Llama, Qwen, Gemma, Mistral and DeepSeek from a library and runs them on whatever GPU it finds.</li>
+<li><strong>dxflow</strong> is the engine that runs both as one containerised workflow, on a cloud VM, a lab GPU server or an HPC node, and publishes the result on an HTTPS address with a certificate already issued.</li>
+<li><strong>DiPhyx</strong> is the quickest way to get a GPU machine with dxflow on it: about a minute, prepaid by the hour, no cloud account.</li>
+</ul>
+<p>The hub workflow that bundles the first two is called <strong>Open UI</strong>. The rest of this post is about turning it on, on a machine you rent and on a machine you own.</p>
+<h2 id="what-you-get">What you get</h2>
+<p>One port, and it asks who is asking.</p>
+<p>Inside the container, Ollama listens on the loopback interface only. No port reaches it from outside. Every request arrives on the web port, where Open WebUI checks the account, the group and the model permission before anything reaches the GPU. That is the single design decision the whole workflow is built around, and it is the reason a bare Ollama server, which has no authentication at all, should never face a network on its own.</p>
+<p>On top of that gate:</p>
+<ul>
+<li><strong>Accounts with roles.</strong> Administrator, user, and pending. Sign-up is closed by default, so an administrator creates accounts or approves the ones waiting in a queue. Or plug in your identity provider: OIDC and OAuth with Keycloak, Entra or Google, or LDAP.</li>
+<li><strong>Groups carry the permissions.</strong> A group decides who may chat, upload files, search the web or issue keys. Model access is granted to groups, so the large model that occupies the GPU can be restricted to the people who need it while a small one stays public.</li>
+<li><strong>A key per person.</strong> Each user issues their own API key from their account page. It answers in the OpenAI shape any client already speaks, and in the Anthropic Messages shape too. The key carries exactly that user&#39;s permissions: a model they cannot see in the browser is refused to their key as well.</li>
+<li><strong>An audit log.</strong> Who called which model, when, through which endpoint. It records metadata and keeps conversation bodies out by default. It lives on the volume next to the database and the model store.</li>
+<li><strong>Sharing one GPU sensibly.</strong> Concurrency, queue depth, resident model count and idle unloading are all in the definition. The defaults suit a 24 GB card holding 7B-class models.</li>
+<li><strong>Document upload and retrieval.</strong> Users can upload files into a chat and ask questions over them. The files stay on the volume.</li>
+</ul>
+<p>Everything the deployment accumulates lands in one folder under the engine&#39;s artifacts: the database with accounts, groups, keys and chats; the audit log; uploaded files; and the model store. Back that folder up and you have backed up the whole thing.</p>
+<h2 id="path-a-a-diphyx-server-in-about-a-minute">Path A: a DiPhyx server, in about a minute</h2>
+<p>This is the path for a team with no GPU in the building, or a team that wants one for a month before deciding.</p>
+<ol>
+<li><strong>Sign in to DiPhyx</strong> with Google, GitHub or LinkedIn and put some credit on the balance.</li>
+<li><strong>Pick a GPU machine.</strong> The T4 machines are the entry point. For 7B and 8B models with a few concurrent users, a 16 GB T4 is enough. For larger models or more people, take the L4 with 24 GB.</li>
+<li><strong>In Setup, switch on &quot;Install dxflow with the server&quot;</strong> and pick <strong>Open UI</strong> as the instant workflow. Raise the disk if you plan to keep several models; the workflow asks for 100 GB of storage.</li>
+<li><strong>Create.</strong> The machine boots, installs Docker and the dxflow engine, activates its licence, starts the console, installs the GPU driver and container runtime because the machine has a card, and then creates and starts the Open UI workflow on its own HTTPS address. All of it happens on first boot without you doing anything.</li>
+<li><strong>Open it.</strong> The server page shows the console link and the workflow link. The workflow link is a subdomain of the machine&#39;s own link, with a certificate already on it. The admin account&#39;s password is drawn per server by DiPhyx and shown on the server page.</li>
+</ol>
+<p>Sign in as the administrator, and you are at step &quot;Add your team&quot; below.</p>
+<p>A stopped DiPhyx server restarts the same workflow on the next boot, on the same volume, so switching the machine off overnight costs only the disk and loses nothing.</p>
+<h2 id="path-b-your-own-gpu-server-or-hpc">Path B: your own GPU server or HPC</h2>
+<p>This is the path for a team that already owns the hardware, or that is not allowed to put the data on anyone&#39;s cloud, including DiPhyx&#39;s.</p>
+<p>dxflow is a single binary. On Linux or macOS:</p>
+<pre><code class="hljs language-bash">curl -fsSL https://dxflow.ai/install.sh | <span class="hljs-built_in">sudo</span> bash
+dxflow --version</code></pre>
+<p>Or download the tarball for your platform from the releases page and put the binary on your PATH. There are builds for Linux, macOS and Windows, on x86_64 and ARM64.</p>
+<p>Start the engine with its web console:</p>
+<pre><code class="hljs language-bash"><span class="hljs-built_in">sudo</span> dxflow boot up --console</code></pre>
+<p>It serves the console and API on port 80. If you want it elsewhere, set <code>HTTP_PORT</code> in the environment or in the engine&#39;s profile file. To sign in to the console from a browser, run <code>dxflow engine pair</code> in another terminal and type the single-use code into the sign-in dialog. Team members who need the console, rather than just the chat page, get their own RSA key registered with <code>dxflow key register</code>, with permissions decided per key.</p>
+<p>Then the workflow:</p>
+<pre><code class="hljs language-bash">dxflow workflow create --identity open-ui hub://open-ui
+dxflow workflow start open-ui --override env.app.ADMIN_PASSWORD=something-long</code></pre>
+<p>The definition is fetched from the hub at create time, so each deploy picks up the current one. The chat page is at port 8080 on that machine. On a lab network that may be all you need: give people <code>http://gpu-box:8080</code> and stop there.</p>
+<p>If the team is not all on one network, publish it:</p>
+<pre><code class="hljs language-bash">dxflow login                 <span class="hljs-comment"># once per engine, in a browser</span>
+dxflow license activate      <span class="hljs-comment"># fetches a subdomain and its certificate</span>
+dxflow workflow start open-ui --<span class="hljs-built_in">link</span></code></pre>
+<p>The free licence gives the engine a name under <code>link.dxflow.ai</code> and a small number of sub-labels under it, each with a certificate already issued. Starting with <code>--link</code> claims one for the web port, and the page comes back on an HTTPS address. The platform records the address it observed the engine from, so this works from behind NAT. Set <code>WEBUI_URL</code> to that address so share links and OAuth redirects resolve, and leave sign-up closed.</p>
+<p>Your prompts, files and chats still never leave the machine. The link is a name and a certificate. Traffic goes straight to your engine.</p>
+<p><strong>On an HPC node.</strong> dxflow drives Singularity and Apptainer as well as Docker and Podman, and maps the GPU request to <code>--nv</code> or <code>--rocm</code>. Instances there share the host&#39;s network and process namespace and do not map ports, so the web page answers on the node&#39;s own address. Resource limits on those runtimes need cgroups v2 with systemd user delegation, which the engine documents and which is worth setting up with the cluster admin before relying on memory caps. Where the site allows a persistent service on a GPU node, this is the same one command; where it does not, a lab-owned GPU workstation with Docker or Podman is the simpler home for a shared chat service, and the HPC stays for the batch work.</p>
+<p><strong>Several GPU machines.</strong> The step has a second mode. Name model servers in <code>OLLAMA_BASE_URLS</code>, separated by semicolons, and the bundled server does not start. The step becomes the gate alone, needs no GPU of its own, and spreads requests across the machines named. Each of those can be the hub&#39;s plain Ollama workflow on a machine with a card, reachable from the gate and from nowhere else. A model present on two servers shows as one entry with twice the capacity behind it.</p>
+<pre><code class="hljs language-bash">dxflow workflow start open-ui \
+    --override <span class="hljs-string">&#x27;env.app.OLLAMA_BASE_URLS=http://gpu-01:11434;http://gpu-02:11434&#x27;</span> \
+    --override resource.app.gpu= \
+    --override resource.app.memory=4G \
+    --<span class="hljs-built_in">link</span></code></pre>
+<p>Hosted models can sit beside the local ones under the same permissions, through <code>OPENAI_API_BASE_URLS</code>, if some of the team is allowed a commercial model for some of the work. The gate does not care where the model lives. The audit log records the call either way.</p>
+<h2 id="add-your-team">Add your team</h2>
+<p>Everything below is in Open WebUI&#39;s Admin Panel, reached from the account menu.</p>
+<ol>
+<li><strong>Change the admin password</strong> from Settings, Account, if you did not set one on the start line. The default is on a public documentation page. Later starts do not touch an account that already exists, so the environment variable will not change it afterwards.</li>
+<li><strong>Create groups first</strong>, under Users, Groups. A group is what permissions and model access attach to, so it should exist before the people who will join it.</li>
+<li><strong>Create accounts or approve them.</strong> Users, Overview lists the accounts waiting in the queue. Or connect your identity provider and let the roles and groups follow from its claims.</li>
+<li><strong>Pull a model.</strong> The store starts empty on purpose, because a model is a decision about a particular card. From Settings, Models, open the Actions menu, choose Manage, and pull a tag from the Ollama library. <code>qwen2.5:1.5b</code> is a sensible first pull: small enough for CPU, and its template carries tool calling, which the interface uses for chat titles and search. Then pull the one you actually want: an 8B model for a T4, a 14B or a quantised 30B for an L4.</li>
+<li><strong>Restrict the big ones.</strong> Each model is public or restricted to groups. Restrict the model that occupies the GPU to the group allowed to occupy it.</li>
+<li><strong>Hand out the URL.</strong> Each person signs in, chats, and issues their own key from their account page if they want one for a script or an editor plugin.</li>
+</ol>
+<p>Check the gate once, from a shell anywhere that can reach the page:</p>
+<pre><code class="hljs language-bash">curl -s -o /dev/null -w <span class="hljs-string">&#x27;%{http_code}\n&#x27;</span> -X POST https://a.yours.link.dxflow.ai/api/chat/completions \
+    -H <span class="hljs-string">&#x27;Content-Type: application/json&#x27;</span> \
+    -d <span class="hljs-string">&#x27;{&quot;model&quot;:&quot;qwen2.5:1.5b&quot;,&quot;messages&quot;:[{&quot;role&quot;:&quot;user&quot;,&quot;content&quot;:&quot;hi&quot;}]}&#x27;</span>
+<span class="hljs-comment"># 401. Anything else means the door is open.</span></code></pre>
+<p>And watch it work:</p>
+<pre><code class="hljs language-bash">dxflow artifact download open-ui/data/audit.log -
+dxflow workflow logs --live open-ui</code></pre>
+<h2 id="using-it-from-code">Using it from code</h2>
+<p>Every OpenAI client already knows how to talk to this. Point the base URL at the deployment&#39;s <code>/api</code> and use a personal key:</p>
+<pre><code class="hljs language-python"><span class="hljs-keyword">from</span> openai <span class="hljs-keyword">import</span> OpenAI
+
+client = OpenAI(
+    base_url=<span class="hljs-string">&quot;https://a.yours.link.dxflow.ai/api&quot;</span>,
+    api_key=<span class="hljs-string">&quot;sk-...&quot;</span>,            <span class="hljs-comment"># issued from the user&#x27;s own account page</span>
+)
+
+reply = client.chat.completions.create(
+    model=<span class="hljs-string">&quot;llama3.1:8b&quot;</span>,
+    messages=[{<span class="hljs-string">&quot;role&quot;</span>: <span class="hljs-string">&quot;user&quot;</span>, <span class="hljs-string">&quot;content&quot;</span>: <span class="hljs-string">&quot;Summarise this incident report.&quot;</span>}],
+)</code></pre>
+<p>A client that speaks the Anthropic Messages shape uses <code>/api/v1/messages</code> on the same host. Editor assistants, internal tools and notebooks all get the same treatment: the model is a URL on your machine, and the key is worth exactly what its account is worth. An administrator&#39;s key reaches every model, so it belongs in no application. Issue keys from the accounts that will use them.</p>
+<h2 id="what-this-does-not-do">What this does not do</h2>
+<ul>
+<li><strong>It does not meter spend per user.</strong> Open WebUI decides whether a user may call a model, not how much. The queue and concurrency settings bound the load on a shared card, and the audit log names who is generating it. A per-user token budget means a metering proxy such as LiteLLM behind the gate.</li>
+<li><strong>It does not make a small GPU large.</strong> A 16 GB T4 runs 7B and 8B models well and runs larger ones slowly or not at all. Pick the machine for the model you want, not the other way around.</li>
+<li><strong>It does not replace the engine&#39;s own sign-in.</strong> The chat page has its own accounts. The dxflow console and API stay behind the engine&#39;s key-based auth, and a person who only needs to chat never sees them.</li>
+</ul>
+<h2 id="why-this-shape">Why this shape</h2>
+<p>The commercial assistants are good. What they cannot offer is a straight answer to the question &quot;where did my data go&quot;, and for some teams that is the whole decision. This setup gives the same page and the same API, on a machine you can point at. On DiPhyx it is an hourly line on a prepaid balance that stops when the machine does. On your own hardware it is a binary and one command.</p>
+<p>Either way, the model belongs on the GPU, the gate belongs in front of it, and the team belongs at a URL. Nothing else has to leave the building.</p>
+<p><em>Related: a companion story in the dxflow series, on one GPU host serving many device agents, covers the other end of the same idea, where the model stays on the host and small agents run on every device. <a href="/stories/what-is-dxflow/">What dxflow is</a> and <a href="/stories/a-gpu-in-a-minute/">a GPU in a minute</a> cover the two halves this post stands on.</em></p>
+
+      </div>
+    </article>
+
+    <section class="more">
+      <div class="wrap">
+        <h2>More from the blog</h2>
+        <div class="more-grid">
+
+          <a class="more-card" href="/stories/what-is-dxflow/">
+            <img src="/assets/covers/dxflow.svg" alt="" loading="lazy" width="1200" height="750">
+            <span class="eyebrow">Engineering</span>
+            <span class="more-title">One binary, four runtimes, any machine: what dxflow is</span>
+            <time datetime="2026-09-15">September 15, 2026</time>
+          </a>
+          <a class="more-card" href="/stories/a-gpu-in-a-minute/">
+            <img src="/assets/covers/gpu-minute.svg" alt="" loading="lazy" width="1200" height="750">
+            <span class="eyebrow">Product</span>
+            <span class="more-title">A GPU in a minute: the cloud, without the cloud account</span>
+            <time datetime="2026-09-15">September 15, 2026</time>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  <section class="cta">
+    <div class="wrap cta-inner">
+      <div>
+        <h2>A GPU machine in about a minute.</h2>
+        <p>Sign in, add credit, pick a machine. Stop it when you are done and the meter stops with it.</p>
+      </div>
+      <div class="cta-actions">
+        <a class="button" href="https://diphyx.com" target="_blank" rel="noopener">Get started</a>
+        <a class="link-arrow" href="https://dxflow.ai" target="_blank" rel="noopener">Install dxflow</a>
+      </div>
+    </div>
+  </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="/"><img class="mark" src="/assets/mark.svg" alt="" width="28" height="28"><span class="brand-name">DiPhyx</span></a>
+          <p>GPU and HPC machines on demand, paid for by the hour.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>DiPhyx</h4>
+          <ul><li><a href="https://diphyx.com" target="_blank" rel="noopener">Home</a></li><li><a href="https://diphyx.com/about" target="_blank" rel="noopener">Why DiPhyx</a></li><li><a href="https://diphyx.com/pricing" target="_blank" rel="noopener">Pricing</a></li><li><a href="https://diphyx.com/contact" target="_blank" rel="noopener">Contact</a></li></ul>
+        </div>
+        <div class="footer-col">
+          <h4>dxflow</h4>
+          <ul><li><a href="https://dxflow.ai" target="_blank" rel="noopener">dxflow.ai</a></li><li><a href="https://dxflow.ai/docs" target="_blank" rel="noopener">Documentation</a></li><li><a href="https://github.com/dxflow-ai" target="_blank" rel="noopener">Workflow hub</a></li></ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul><li><a href="https://github.com/diphyx" target="_blank" rel="noopener">GitHub</a></li><li><a href="mailto:info@diphyx.com">info@diphyx.com</a></li><li><a href="https://diphyx.com/terms" target="_blank" rel="noopener">Terms</a></li><li><a href="https://diphyx.com/privacy" target="_blank" rel="noopener">Privacy</a></li></ul>
+        </div>
+      </div>
+      <div class="footer-base">
+        <span>© 2026 DiPhyx</span>
+        <a href="/feed.xml">RSS</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

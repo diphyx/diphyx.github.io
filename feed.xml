@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>DiPhyx Blog</title>
+    <link>https://diphyx.github.io/</link>
+    <atom:link href="https://diphyx.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+    <description>Stories about DiPhyx and dxflow: GPU and HPC machines by the hour, and the engine that turns any machine into a node.</description>
+    <language>en</language>
+    <item>
+      <title>Private AI for your team, on a machine you control</title>
+      <link>https://diphyx.github.io/stories/private-ai-for-your-team/</link>
+      <guid isPermaLink="true">https://diphyx.github.io/stories/private-ai-for-your-team/</guid>
+      <pubDate>Tue, 15 Sep 2026 12:00:00 GMT</pubDate>
+      <category>Guides</category>
+      <description>Open WebUI and dxflow give every person on the team a ChatGPT-style page and an API key, backed by open models on a GPU you rent by the hour or already own. Nothing you type leaves the machine.</description>
+    </item>
+    <item>
+      <title>One binary, four runtimes, any machine: what dxflow is</title>
+      <link>https://diphyx.github.io/stories/what-is-dxflow/</link>
+      <guid isPermaLink="true">https://diphyx.github.io/stories/what-is-dxflow/</guid>
+      <pubDate>Tue, 15 Sep 2026 11:00:00 GMT</pubDate>
+      <category>Engineering</category>
+      <description>The engine under DiPhyx runs the same on a laptop, a GPU server, an HPC node and a cloud VM. Here is what it does, why it is one file, and what a workflow looks like.</description>
+    </item>
+    <item>
+      <title>A GPU in a minute: the cloud, without the cloud account</title>
+      <link>https://diphyx.github.io/stories/a-gpu-in-a-minute/</link>
+      <guid isPermaLink="true">https://diphyx.github.io/stories/a-gpu-in-a-minute/</guid>
+      <pubDate>Tue, 15 Sep 2026 10:00:00 GMT</pubDate>
+      <category>Product</category>
+      <description>How DiPhyx turns 'I need a machine for an afternoon' into one click, one hour, one line on a prepaid balance.</description>
+    </item>
+  </channel>
+</rss>

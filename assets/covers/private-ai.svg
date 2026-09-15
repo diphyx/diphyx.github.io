@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img" aria-label="Chat requests pass through a gate before reaching a GPU inside one machine boundary">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#f0f5fa"/></linearGradient>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ff8a00"/><stop offset=".5" stop-color="#ffcf1a"/><stop offset="1" stop-color="#00c2ff"/></linearGradient>
+    <radialGradient id="halo" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#ff8a00" stop-opacity=".18"/><stop offset="1" stop-color="#ff8a00" stop-opacity="0"/></radialGradient>
+    <radialGradient id="halo2" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#00c2ff" stop-opacity=".2"/><stop offset="1" stop-color="#00c2ff" stop-opacity="0"/></radialGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#0a2540" stroke-opacity=".05"/></pattern>
+  </defs>
+  <rect width="1200" height="750" fill="url(#bg)"/>
+  <rect width="1200" height="750" fill="url(#grid)"/>
+  <circle cx="320" cy="360" r="260" fill="url(#halo)"/>
+  <circle cx="900" cy="380" r="260" fill="url(#halo2)"/>
+  <!-- machine boundary -->
+  <rect x="470" y="130" width="620" height="490" rx="28" fill="#fff" fill-opacity=".6" stroke="#0a2540" stroke-opacity=".18" stroke-width="2" stroke-dasharray="10 10"/>
+  <text x="500" y="168" font-family="SUSE Mono, Menlo, monospace" font-size="15" letter-spacing="3" fill="#6b7c93">A MACHINE YOU CONTROL</text>
+  <!-- people -->
+  <g fill="none" stroke="#0a2540" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="180" cy="250" r="22"/><path d="M135 320c0-28 20-46 45-46s45 18 45 46"/>
+    <circle cx="180" cy="375" r="22"/><path d="M135 445c0-28 20-46 45-46s45 18 45 46"/>
+    <circle cx="180" cy="500" r="22"/><path d="M135 570c0-28 20-46 45-46s45 18 45 46"/>
+  </g>
+  <!-- chat bubbles -->
+  <g fill="#fff" stroke="#0a2540" stroke-opacity=".25" stroke-width="2">
+    <rect x="240" y="245" width="130" height="44" rx="14"/><rect x="240" y="370" width="150" height="44" rx="14"/><rect x="240" y="495" width="110" height="44" rx="14"/>
+  </g>
+  <g fill="#c0c5d8"><circle cx="268" cy="267" r="4"/><circle cx="288" cy="267" r="4"/><circle cx="308" cy="267" r="4"/><circle cx="268" cy="392" r="4"/><circle cx="288" cy="392" r="4"/><circle cx="308" cy="392" r="4"/><circle cx="328" cy="392" r="4"/><circle cx="268" cy="517" r="4"/><circle cx="288" cy="517" r="4"/></g>
+  <!-- streams to gate -->
+  <g fill="none" stroke="url(#g)" stroke-width="3" stroke-linecap="round">
+    <path d="M390 267 C450 267 460 375 540 375"/>
+    <path d="M410 392 C460 392 470 375 540 375"/>
+    <path d="M370 517 C450 517 470 375 540 375"/>
+  </g>
+  <!-- gate: a shield with a keyhole -->
+  <path d="M600 290 L660 268 L720 290 V372 C720 420 680 450 660 460 C640 450 600 420 600 372 Z" fill="#fff" stroke="url(#g)" stroke-width="5" stroke-linejoin="round"/>
+  <circle cx="660" cy="352" r="14" fill="none" stroke="#0a2540" stroke-width="4"/><path d="M660 366v30" stroke="#0a2540" stroke-width="4" stroke-linecap="round"/>
+  <text x="660" y="500" text-anchor="middle" font-family="SUSE, system-ui, sans-serif" font-size="16" font-weight="600" letter-spacing="2" fill="#425466">ACCOUNTS · GROUPS · KEYS</text>
+  <!-- gate to gpu -->
+  <path d="M722 375 H820" fill="none" stroke="url(#g)" stroke-width="3" stroke-linecap="round"/>
+  <!-- gpu chip -->
+  <g transform="translate(830 290)">
+    <rect x="0" y="0" width="200" height="170" rx="16" fill="#fff" stroke="#0a2540" stroke-width="3"/>
+    <rect x="40" y="35" width="120" height="100" rx="10" fill="none" stroke="url(#g)" stroke-width="4"/>
+    <g stroke="#0a2540" stroke-width="3" stroke-linecap="round" stroke-opacity=".5">
+      <path d="M70 0v-22M100 0v-22M130 0v-22M70 170v22M100 170v22M130 170v22M0 60h-22M0 85h-22M0 110h-22M200 60h22M200 85h22M200 110h22"/>
+    </g>
+    <text x="100" y="94" text-anchor="middle" font-family="SUSE Mono, Menlo, monospace" font-size="20" font-weight="600" fill="#0a2540">GPU</text>
+  </g>
+  <text x="930" y="500" text-anchor="middle" font-family="SUSE, system-ui, sans-serif" font-size="16" font-weight="600" letter-spacing="2" fill="#425466">OPEN MODELS</text>
+</svg>

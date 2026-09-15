@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A GPU in a minute: the cloud, without the cloud account · DiPhyx</title>
+  <meta name="description" content="How DiPhyx turns 'I need a machine for an afternoon' into one click, one hour, one line on a prepaid balance.">
+  <link rel="canonical" href="https://diphyx.github.io/stories/a-gpu-in-a-minute/">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/assets/favicon.png" type="image/png">
+  <link rel="alternate" type="application/rss+xml" title="DiPhyx Blog" href="/feed.xml">
+  <meta property="og:site_name" content="DiPhyx Blog">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="A GPU in a minute: the cloud, without the cloud account">
+  <meta property="og:description" content="How DiPhyx turns 'I need a machine for an afternoon' into one click, one hour, one line on a prepaid balance.">
+  <meta property="og:url" content="https://diphyx.github.io/stories/a-gpu-in-a-minute/">
+  <meta property="og:image" content="https://diphyx.github.io/assets/preview.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=SUSE:wght@400;500;600;700;800&family=SUSE+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/style.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"A GPU in a minute: the cloud, without the cloud account","description":"How DiPhyx turns 'I need a machine for an afternoon' into one click, one hour, one line on a prepaid balance.","datePublished":"2026-09-15T10:00:00.000Z","author":[{"@type":"Person","name":"Babak Goshayeshi"}],"publisher":{"@type":"Organization","name":"DiPhyx"},"mainEntityOfPage":"https://diphyx.github.io/stories/a-gpu-in-a-minute/","image":"https://diphyx.github.io/assets/covers/gpu-minute.svg"}</script>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="/">
+        <img class="mark" src="/assets/mark.svg" alt="" width="28" height="28">
+        <span class="brand-name">DiPhyx</span>
+        <span class="brand-sep" aria-hidden="true">/</span>
+        <span class="brand-section">Blog</span>
+      </a>
+      <nav class="site-nav" aria-label="Site">
+        <a href="/" aria-current="page">Blog</a><a href="https://diphyx.com" target="_blank" rel="noopener">DiPhyx</a><a href="https://dxflow.ai" target="_blank" rel="noopener">dxflow</a><a href="https://github.com/diphyx" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+      <a class="button" href="https://diphyx.com" target="_blank" rel="noopener">Get a machine</a>
+    </div>
+  </header>
+  <main>
+
+    <article class="post">
+      <header class="post-head">
+        <div class="wrap narrow">
+          <a class="eyebrow" href="/#product">Product</a>
+          <h1>A GPU in a minute: the cloud, without the cloud account</h1>
+          <p class="post-subtitle">How DiPhyx turns 'I need a machine for an afternoon' into one click, one hour, one line on a prepaid balance.</p>
+          <div class="post-meta">
+            <time datetime="2026-09-15">September 15, 2026</time>
+            <span aria-hidden="true">·</span>
+            <span>7 min read</span>
+          </div>
+
+    <div class="authors">
+
+        <div class="author">
+          <span class="avatar" aria-hidden="true">BG</span>
+          <div class="author-text">
+            <span class="author-name">Babak Goshayeshi</span>
+            <span class="author-role">DiPhyx</span>
+          </div>
+        </div>
+    </div>
+        </div>
+      </header>
+      <div class="wrap narrow"><img class="post-hero" src="/assets/covers/gpu-minute.svg" alt="" width="1200" height="750"></div>
+      <div class="wrap narrow prose">
+<p>You want a machine with a GPU for an afternoon. Maybe a model to fine-tune, a molecular dynamics run that will not finish on your laptop, a mesh that ParaView chokes on. What stands between you and that machine is not money. It is an account.</p>
+<p>The cloud wants a billing profile, an IAM user, a key pair, a VPC, a security group, and a quota request for the GPU family you want, which a support agent will approve in one to three business days. By the time it is all in place the afternoon is over, and you now own a cloud account you will be paying for in small, surprising ways for years.</p>
+<p>DiPhyx exists to remove that account from the path. Its own description of the product fits in four sentences:</p>
+<blockquote>
+<p>A person signs up. They buy credit. One minute later they have a machine running on AWS, GCP or Azure. They stop it when they finish.</p>
+</blockquote>
+<p>That is the whole product. Everything else is a consequence of taking those four sentences seriously.</p>
+<h2 id="four-steps-and-the-slow-one-is-the-cloud">Four steps, and the slow one is the cloud</h2>
+<ol>
+<li><strong>Sign in.</strong> OAuth only: Google, GitHub or LinkedIn. There is no password to invent. A new account arrives with a small amount of free credit so the first machine costs nothing.</li>
+<li><strong>Buy credit.</strong> Prepaid, through Stripe. You put money on a balance before anything runs.</li>
+<li><strong>Pick a machine.</strong> A table of offers with the cores, memory, GPU and price per hour beside each one. Pick one, give it a name, choose a disk size, decide whether you want the dxflow engine installed, and press Create.</li>
+<li><strong>Work, then stop it.</strong> The machine is on AWS, Google Cloud or Azure, but you never see those consoles. You SSH in, open the web console, or open the workflow it booted with. When you are done, stop it. The clock stops with it.</li>
+</ol>
+<p>DiPhyx holds the cloud accounts. It holds one account per cloud, in one region per cloud, and it makes all the API calls. You bring nothing but a browser. That is also the trade: you cannot bring your own account, pick a region DiPhyx does not run in, or share one server between two people. The about page says so in a section literally titled &quot;Honestly&quot;, which is a rare thing to find on a pricing page and a good reason to trust the rest of it.</p>
+<h2 id="what-quot-a-minute-quot-actually-means">What &quot;a minute&quot; actually means</h2>
+<p>The create button answers instantly, because the server record is written before any cloud resource is asked for. Behind it, the platform checks that the machine and image match, that the disk fits the range, and that your balance covers one full day of everything you would then be running. Then it asks the cloud for the machine, opens the ports it needs, and polls until the cloud says Running.</p>
+<p>The longest step is the cloud handing the machine over. On the homepage that is the &quot;~1 min&quot; stat, and the platform is careful about the claim: it does not count a machine as ready until it has an address.</p>
+<h2 id="the-money-model-in-plain-words">The money model, in plain words</h2>
+<p>Most cloud bills are a surprise because they arrive later. DiPhyx does not send bills.</p>
+<ul>
+<li><strong>Prepaid only.</strong> Credit first, then spend. At zero, machines stop. Nobody ever owes anything.</li>
+<li><strong>Hourly, rounded up, minimum one hour.</strong> A five-minute test costs an hour. Restarting inside an hour you already paid for costs nothing extra.</li>
+<li><strong>Two meters.</strong> The machine meter runs while the machine runs. The disk meter runs from first boot until you delete the server, because the disk still exists while the machine is off. A stopped machine costs its disk and nothing else.</li>
+<li><strong>One day of runway.</strong> Before a create or a start, the balance has to cover a full day of everything the account would then be running. A machine you cannot afford for a day is greyed out in the table rather than started and reclaimed.</li>
+<li><strong>Warn, stop, warn, delete.</strong> When credit runs low the platform emails you in hours left, not dollars. At zero it stops your machines. After a wait at zero it warns again, and only then does it delete machines and their disks. Stopping is reversible: add credit and start again.</li>
+</ul>
+<p>Prices are frozen at the moment a machine starts, so a price change never rewrites a bill you already earned.</p>
+<h2 id="what-a-gpu-machine-arrives-with">What a GPU machine arrives with</h2>
+<p>Pick a machine whose name carries a GPU, such as &quot;G4dn XLarge · Tesla T4&quot; or &quot;G6 2XLarge · NVIDIA L4&quot;, and the platform does the part nobody enjoys. On AWS the machine boots from NVIDIA&#39;s Deep Learning base image, so the driver is already built against the kernel it ships. Everywhere else, and on any machine where the image lacks one, a first-boot script finds the card on the PCI bus, installs the vendor driver, and wires the container runtime so a container can see the GPU.</p>
+<p>You pick a GPU machine. You do not then pick a driver, a toolkit or a runtime. By the time the console opens, <code>nvidia-smi</code> works, and so does a container that asks for the card.</p>
+<div class="table"><table><thead><tr><th>Machine</th><th>GPU</th><th>vCPU</th><th>Memory</th></tr></thead><tbody><tr><td>G4dn XLarge</td><td>Tesla T4, 16 GB</td><td>4</td><td>16 GB</td></tr><tr><td>G4dn 2XLarge</td><td>Tesla T4, 16 GB</td><td>8</td><td>32 GB</td></tr><tr><td>G4dn 4XLarge</td><td>Tesla T4, 16 GB</td><td>16</td><td>64 GB</td></tr><tr><td>G6 XLarge</td><td>NVIDIA L4, 24 GB</td><td>4</td><td>16 GB</td></tr><tr><td>G6 2XLarge</td><td>NVIDIA L4, 24 GB</td><td>8</td><td>32 GB</td></tr></tbody></table></div>
+<p>The live prices are on the pricing page and in the machine table, per hour, with a per-day and per-month figure beside them so nobody has to multiply.</p>
+<h2 id="the-one-switch-that-changes-everything-install-dxflow">The one switch that changes everything: install dxflow</h2>
+<p>The Setup step of the create form has one toggle that turns a rented machine into something more than a rented machine: <strong>Install dxflow with the server.</strong></p>
+<p>With it on, the first boot installs Docker, installs the dxflow engine, activates a licence, and starts the engine with its web console served on an HTTPS address that DiPhyx already knows before the machine exists. Two more fields appear under the toggle:</p>
+<ul>
+<li><strong>Instant workflow.</strong> Pick one from the hub catalogue, and the same boot creates it and starts it on its own HTTPS address. Jupyter, RStudio, VS Code, GROMACS, OpenFOAM, ParaView, Ollama, Open WebUI, a full Linux desktop, and about seventy others. A machine stopped and started again comes back running the thing you asked for.</li>
+<li><strong>Agent model.</strong> Wire dxflow&#39;s built-in agent to a hosted model, paid from the same balance by the token. Then you can ask the machine, in plain language, to find or write a workflow and run it.</li>
+</ul>
+<p>The <strong>Console</strong> button on the server page is where this lands. Click it and the platform signs a one-time challenge with a key it holds for that server, mints a one-hour token, and drops you into the dxflow console already signed in. No login screen, no key file, no copy-and-paste. The private key never leaves DiPhyx, and the token rides in the URL fragment where no access log can see it.</p>
+<p>The whole workflow catalogue is priced the same way: dxflow adds nothing to the bill. You pay for the machine and the disk, by the hour, and nothing else.</p>
+<h2 id="what-it-is-not">What it is not</h2>
+<p>DiPhyx is deliberately small. It does not build object storage, monitoring, alarms or proxies. It does not share a server between accounts. It does not run a workflow engine of its own: where a machine wants one, that is dxflow&#39;s job, and the two are designed to meet exactly at the create form.</p>
+<p>That narrowness is the point. A platform that only does one thing can promise a machine in a minute and mean it.</p>
+<h2 id="try-it">Try it</h2>
+<p>Sign in, spend the free credit on the smallest machine, and stop it. Then do it again with a T4 and the dxflow toggle on, pick Jupyter as the instant workflow, and open it from the link on the server page. The afternoon you were going to spend on IAM is still yours.</p>
+<p><em>Next in this series: <a href="/stories/what-is-dxflow/">What dxflow is, and why it fits on a Raspberry Pi and a supercomputer</a>, and the one people ask for most: <a href="/stories/private-ai-for-your-team/">Private AI for your team, on your machine</a>.</em></p>
+
+      </div>
+    </article>
+
+    <section class="more">
+      <div class="wrap">
+        <h2>More from the blog</h2>
+        <div class="more-grid">
+
+          <a class="more-card" href="/stories/private-ai-for-your-team/">
+            <img src="/assets/covers/private-ai.svg" alt="" loading="lazy" width="1200" height="750">
+            <span class="eyebrow">Guides</span>
+            <span class="more-title">Private AI for your team, on a machine you control</span>
+            <time datetime="2026-09-15">September 15, 2026</time>
+          </a>
+          <a class="more-card" href="/stories/what-is-dxflow/">
+            <img src="/assets/covers/dxflow.svg" alt="" loading="lazy" width="1200" height="750">
+            <span class="eyebrow">Engineering</span>
+            <span class="more-title">One binary, four runtimes, any machine: what dxflow is</span>
+            <time datetime="2026-09-15">September 15, 2026</time>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  <section class="cta">
+    <div class="wrap cta-inner">
+      <div>
+        <h2>A GPU machine in about a minute.</h2>
+        <p>Sign in, add credit, pick a machine. Stop it when you are done and the meter stops with it.</p>
+      </div>
+      <div class="cta-actions">
+        <a class="button" href="https://diphyx.com" target="_blank" rel="noopener">Get started</a>
+        <a class="link-arrow" href="https://dxflow.ai" target="_blank" rel="noopener">Install dxflow</a>
+      </div>
+    </div>
+  </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="/"><img class="mark" src="/assets/mark.svg" alt="" width="28" height="28"><span class="brand-name">DiPhyx</span></a>
+          <p>GPU and HPC machines on demand, paid for by the hour.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>DiPhyx</h4>
+          <ul><li><a href="https://diphyx.com" target="_blank" rel="noopener">Home</a></li><li><a href="https://diphyx.com/about" target="_blank" rel="noopener">Why DiPhyx</a></li><li><a href="https://diphyx.com/pricing" target="_blank" rel="noopener">Pricing</a></li><li><a href="https://diphyx.com/contact" target="_blank" rel="noopener">Contact</a></li></ul>
+        </div>
+        <div class="footer-col">
+          <h4>dxflow</h4>
+          <ul><li><a href="https://dxflow.ai" target="_blank" rel="noopener">dxflow.ai</a></li><li><a href="https://dxflow.ai/docs" target="_blank" rel="noopener">Documentation</a></li><li><a href="https://github.com/dxflow-ai" target="_blank" rel="noopener">Workflow hub</a></li></ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul><li><a href="https://github.com/diphyx" target="_blank" rel="noopener">GitHub</a></li><li><a href="mailto:info@diphyx.com">info@diphyx.com</a></li><li><a href="https://diphyx.com/terms" target="_blank" rel="noopener">Terms</a></li><li><a href="https://diphyx.com/privacy" target="_blank" rel="noopener">Privacy</a></li></ul>
+        </div>
+      </div>
+      <div class="footer-base">
+        <span>© 2026 DiPhyx</span>
+        <a href="/feed.xml">RSS</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

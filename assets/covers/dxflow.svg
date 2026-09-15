@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img" aria-label="One dxflow binary fans out to four container runtimes on laptops, GPU servers, HPC nodes and cloud VMs">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#f0f5fa"/></linearGradient>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ff8a00"/><stop offset=".5" stop-color="#ffcf1a"/><stop offset="1" stop-color="#00c2ff"/></linearGradient>
+    <linearGradient id="gv" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff8a00"/><stop offset=".5" stop-color="#ffcf1a"/><stop offset="1" stop-color="#00c2ff"/></linearGradient>
+    <radialGradient id="halo" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#ffb800" stop-opacity=".22"/><stop offset="1" stop-color="#ffb800" stop-opacity="0"/></radialGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#0a2540" stroke-opacity=".05"/></pattern>
+  </defs>
+  <rect width="1200" height="750" fill="url(#bg)"/>
+  <rect width="1200" height="750" fill="url(#grid)"/>
+  <circle cx="300" cy="375" r="300" fill="url(#halo)"/>
+  <!-- the binary -->
+  <g transform="translate(300 375)">
+    <circle r="120" fill="none" stroke="#0a2540" stroke-opacity=".12" stroke-width="2"/>
+    <circle r="160" fill="none" stroke="#0a2540" stroke-opacity=".07" stroke-width="2" stroke-dasharray="3 9"/>
+    <rect x="-70" y="-70" width="140" height="140" rx="30" fill="#fff" stroke="url(#gv)" stroke-width="6"/>
+    <text y="-6" text-anchor="middle" font-family="SUSE Mono, Menlo, monospace" font-size="26" font-weight="600" fill="#0a2540">dxflow</text>
+    <text y="30" text-anchor="middle" font-family="SUSE Mono, Menlo, monospace" font-size="14" letter-spacing="3" fill="#6b7c93">ONE BINARY</text>
+  </g>
+  <!-- streams -->
+  <g fill="none" stroke="url(#g)" stroke-width="3" stroke-linecap="round">
+    <path d="M375 340 C560 340 560 150 740 150"/>
+    <path d="M375 365 C560 365 560 300 740 300"/>
+    <path d="M375 385 C560 385 560 450 740 450"/>
+    <path d="M375 410 C560 410 560 600 740 600"/>
+  </g>
+  <!-- runtime labels on the streams -->
+  <g font-family="SUSE Mono, Menlo, monospace" font-size="13" letter-spacing="2" fill="#6b7c93">
+    <text x="560" y="220">DOCKER</text><text x="560" y="322">PODMAN</text><text x="560" y="440">SINGULARITY</text><text x="560" y="540">APPTAINER</text>
+  </g>
+  <!-- machines -->
+  <g fill="none" stroke="#0a2540" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <!-- laptop -->
+    <g transform="translate(760 110)"><rect x="12" y="0" width="96" height="60" rx="6" fill="#fff"/><path d="M0 74h120M12 60v0"/><path d="M4 74 L12 60 M116 74 L108 60"/></g>
+    <!-- gpu server -->
+    <g transform="translate(760 262)"><rect x="0" y="0" width="120" height="76" rx="8" fill="#fff"/><rect x="34" y="18" width="52" height="40" rx="5" stroke="url(#g)" stroke-width="4"/><path d="M12 22h10M12 38h10M12 54h10M98 22h10M98 38h10M98 54h10"/></g>
+    <!-- hpc rack -->
+    <g transform="translate(760 402)"><rect x="12" y="0" width="96" height="96" rx="8" fill="#fff"/><path d="M12 24h96M12 48h96M12 72h96"/><circle cx="92" cy="12" r="3" fill="#00c2ff" stroke="none"/><circle cx="92" cy="36" r="3" fill="#00c2ff" stroke="none"/><circle cx="92" cy="60" r="3" fill="#00c2ff" stroke="none"/><circle cx="92" cy="84" r="3" fill="#00c2ff" stroke="none"/></g>
+    <!-- cloud -->
+    <g transform="translate(760 560)"><path d="M32 78 H96 a24 24 0 0 0 4 -47.6 a32 32 0 0 0 -62 -8 a22 22 0 0 0 -6 55.6z" fill="#fff"/></g>
+  </g>
+  <g font-family="SUSE, system-ui, sans-serif" font-size="16" font-weight="600" letter-spacing="2" fill="#425466">
+    <text x="920" y="156">LAPTOP</text><text x="920" y="306">GPU SERVER</text><text x="920" y="456">HPC NODE</text><text x="920" y="606">CLOUD VM</text>
+  </g>
+</svg>

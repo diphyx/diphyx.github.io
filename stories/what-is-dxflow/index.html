@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>One binary, four runtimes, any machine: what dxflow is · DiPhyx</title>
+  <meta name="description" content="The engine under DiPhyx runs the same on a laptop, a GPU server, an HPC node and a cloud VM. Here is what it does, why it is one file, and what a workflow looks like.">
+  <link rel="canonical" href="https://diphyx.github.io/stories/what-is-dxflow/">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/assets/favicon.png" type="image/png">
+  <link rel="alternate" type="application/rss+xml" title="DiPhyx Blog" href="/feed.xml">
+  <meta property="og:site_name" content="DiPhyx Blog">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="One binary, four runtimes, any machine: what dxflow is">
+  <meta property="og:description" content="The engine under DiPhyx runs the same on a laptop, a GPU server, an HPC node and a cloud VM. Here is what it does, why it is one file, and what a workflow looks like.">
+  <meta property="og:url" content="https://diphyx.github.io/stories/what-is-dxflow/">
+  <meta property="og:image" content="https://diphyx.github.io/assets/preview.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=SUSE:wght@400;500;600;700;800&family=SUSE+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/style.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"One binary, four runtimes, any machine: what dxflow is","description":"The engine under DiPhyx runs the same on a laptop, a GPU server, an HPC node and a cloud VM. Here is what it does, why it is one file, and what a workflow looks like.","datePublished":"2026-09-15T11:00:00.000Z","author":[{"@type":"Person","name":"Babak Goshayeshi"}],"publisher":{"@type":"Organization","name":"DiPhyx"},"mainEntityOfPage":"https://diphyx.github.io/stories/what-is-dxflow/","image":"https://diphyx.github.io/assets/covers/dxflow.svg"}</script>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="/">
+        <img class="mark" src="/assets/mark.svg" alt="" width="28" height="28">
+        <span class="brand-name">DiPhyx</span>
+        <span class="brand-sep" aria-hidden="true">/</span>
+        <span class="brand-section">Blog</span>
+      </a>
+      <nav class="site-nav" aria-label="Site">
+        <a href="/" aria-current="page">Blog</a><a href="https://diphyx.com" target="_blank" rel="noopener">DiPhyx</a><a href="https://dxflow.ai" target="_blank" rel="noopener">dxflow</a><a href="https://github.com/diphyx" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+      <a class="button" href="https://diphyx.com" target="_blank" rel="noopener">Get a machine</a>
+    </div>
+  </header>
+  <main>
+
+    <article class="post">
+      <header class="post-head">
+        <div class="wrap narrow">
+          <a class="eyebrow" href="/#engineering">Engineering</a>
+          <h1>One binary, four runtimes, any machine: what dxflow is</h1>
+          <p class="post-subtitle">The engine under DiPhyx runs the same on a laptop, a GPU server, an HPC node and a cloud VM. Here is what it does, why it is one file, and what a workflow looks like.</p>
+          <div class="post-meta">
+            <time datetime="2026-09-15">September 15, 2026</time>
+            <span aria-hidden="true">·</span>
+            <span>8 min read</span>
+          </div>
+
+    <div class="authors">
+
+        <div class="author">
+          <span class="avatar" aria-hidden="true">BG</span>
+          <div class="author-text">
+            <span class="author-name">Babak Goshayeshi</span>
+            <span class="author-role">DiPhyx</span>
+          </div>
+        </div>
+    </div>
+        </div>
+      </header>
+      <div class="wrap narrow"><img class="post-hero" src="/assets/covers/dxflow.svg" alt="" width="1200" height="750"></div>
+      <div class="wrap narrow prose">
+<p>Most compute a technical team touches is not one kind of machine. There is a laptop, a workstation with a card in it, a cloud VM someone rented for a project, and a cluster with a scheduler and a queue. Each one has its own way of running a container, its own way of getting files on and off, its own way of opening a port, and its own idea of who you are.</p>
+<p>dxflow&#39;s premise is that this should be one way. Its own tagline: a single binary that turns a machine into a node. Install it on any of those machines and they all answer the same CLI, the same REST API and the same web console. Its version at the time of writing is 2.4.0, and it is free to use.</p>
+<p>Here is what that binary does.</p>
+<h2 id="five-things-one-engine">Five things, one engine</h2>
+<p>The homepage counts it out: one binary, three interfaces, four runtimes, five capabilities. The capabilities are the useful part.</p>
+<p><strong>Workflow.</strong> A YAML file names one or more steps, each a container image with a command, environment, volumes, ports and resource limits. Steps run in order or in parallel. The engine creates the workflow, starts it, streams its logs, records its events and per-step resource use, and stops it. State survives an engine restart.</p>
+<p><strong>Artifact.</strong> Files on the machine, without SSH or SCP. Upload input, list results, download them, zip and unzip, share. Paths are relative to the engine&#39;s volume, and a step&#39;s mounted directory is the same folder you see under Artifacts, so what you upload is what the step reads.</p>
+<p><strong>Shell.</strong> A terminal into the host or into a running step, from the console or from the CLI, on any of the runtimes.</p>
+<p><strong>Runtime.</strong> Docker, Podman, Singularity and Apptainer, configured rather than guessed. The same definition can mix them: a Jupyter step on Docker beside a training step on Singularity with a GPU.</p>
+<p><strong>Agent.</strong> A built-in assistant that talks to a model of your choosing and operates the engine through its own tools: search the hub, write a workflow, start it, read its logs and stats, fix the override and start it again. Claude, Gemini, Amazon Bedrock and any OpenAI-compatible endpoint, including a local one.</p>
+<p>Each of those is a permission in a signed licence, and the built-in licence grants all five. Nothing is held back from the free tier.</p>
+<h2 id="why-one-binary">Why one binary</h2>
+<p>The engine is a Go program with no dependencies beyond the container runtime it drives. That decision shows up everywhere.</p>
+<ul>
+<li><strong>Install is a download.</strong> A script for Linux and macOS, or a tarball for Linux, macOS and Windows on x86_64 or ARM64, extracted onto the PATH. There is nothing to compile and no runtime to bring.</li>
+<li><strong>The console ships with the engine.</strong> Start it with <code>--console</code> and the engine fetches the web UI matching its own version and serves it at the root. The console is released in lockstep with the engine, so the two never disagree.</li>
+<li><strong>It fits on an edge device.</strong> A Raspberry Pi runs the same binary as a GPU host. The edge agents story in the dxflow series is built on exactly that.</li>
+<li><strong>A machine can arrive with it.</strong> DiPhyx installs it on first boot from the same release, which is why a rented GPU server opens in a console a minute after you ask for it.</li>
+</ul>
+<h2 id="a-workflow-in-full">A workflow, in full</h2>
+<p>The hub&#39;s own explanation of the format is short enough to quote as a working example:</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">name:</span> <span class="hljs-string">app</span>
+<span class="hljs-attr">tags:</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">example</span>
+<span class="hljs-attr">steps:</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">app</span>
+    <span class="hljs-attr">runtime:</span> <span class="hljs-string">docker</span>
+    <span class="hljs-attr">mode:</span> <span class="hljs-string">sequential</span>
+    <span class="hljs-attr">image:</span> <span class="hljs-string">workflow-image:latest</span>
+    <span class="hljs-attr">command:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">app</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">--serve</span>
+    <span class="hljs-attr">env:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">PARAM1=value1</span>
+    <span class="hljs-attr">volumes:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-attr">host:</span> <span class="hljs-string">./volume/data</span>
+        <span class="hljs-attr">container:</span> <span class="hljs-string">/data</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-attr">host:</span> <span class="hljs-string">./volume/results</span>
+        <span class="hljs-attr">container:</span> <span class="hljs-string">/results</span>
+    <span class="hljs-attr">ports:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-attr">host:</span> <span class="hljs-string">&quot;8080&quot;</span>
+        <span class="hljs-attr">container:</span> <span class="hljs-string">&quot;8080&quot;</span>
+    <span class="hljs-attr">resources:</span>
+      <span class="hljs-attr">cpu:</span> <span class="hljs-string">&quot;4&quot;</span>
+      <span class="hljs-attr">memory:</span> <span class="hljs-string">8G</span></code></pre>
+<p>Per step: <code>runtime</code> picks one of the four. <code>mode</code> is sequential, where steps run one after another and each needs a command, or parallel. <code>image</code> is the container. <code>command</code> is raw arguments with no shell, so pipes and globs go inside an explicit <code>sh -c</code>. <code>env</code>, <code>volumes</code> and <code>ports</code> are what you expect. <code>resources</code> takes decimal cores, a memory string, and <code>gpu: nvidia</code> (or <code>amd</code>), which the engine turns into <code>--gpus all</code> for Docker and Podman and <code>--nv</code> or <code>--rocm</code> for Singularity and Apptainer. A <code>link:</code> field names the port to publish on an HTTPS address, which the next section explains.</p>
+<p>A multi-step pipeline is just more entries in the list. A run that needs Jupyter open beside it makes the Jupyter step parallel and the compute steps sequential.</p>
+<p>The file does not have to live on the machine. <code>dxflow workflow create</code> takes a source: a local path, an HTTP URL, or <code>hub://&lt;name&gt;</code>.</p>
+<h2 id="the-hub">The hub</h2>
+<p>The hub is a public catalogue on GitHub of workflows already built as container images, read live by the engine at deploy time. Nineteen categories: genomics, molecular dynamics, structural biology, analytics, AI, simulation, visualization, development, desktops, browsers, graphics, messaging, infrastructure, office, media, engineering, geospatial and utilities. GROMACS, OpenFOAM, ParaView, Jupyter, RStudio, VS Code, Ollama, Open WebUI, Blender, QGIS, a plain Ubuntu desktop.</p>
+<pre><code class="hljs language-bash">dxflow workflow hub search genomics
+dxflow workflow hub inspect fastqc --yaml
+dxflow workflow create --identity notebook hub://jupyter
+dxflow workflow start notebook --override env.app.PASSWORD=my-strong-pass
+dxflow workflow logs --live notebook</code></pre>
+<p>Two things about the hub matter more than the list. First, the definition stays on the hub, so every deploy picks up the current one; take it local with <code>hub inspect --yaml</code> when you want to edit it. Second, the settings are the definition. Overrides on the start line change a port, a volume, an environment variable or a resource for that start, without touching the file. The hub entries are written to be run that way, with the password, the model, the GPU and the memory all a flag away.</p>
+<h2 id="publishing-a-step-links">Publishing a step: links</h2>
+<p>A running Jupyter on a cloud VM is only useful if you can open it, and opening it usually means a security group, a reverse proxy and a certificate. dxflow folds all three into the engine.</p>
+<p>Log the engine in once and activate its licence:</p>
+<pre><code class="hljs language-bash">dxflow login
+dxflow license activate</code></pre>
+<p>Activation gives the engine a name under <code>link.dxflow.ai</code> with a certificate already issued, plus a few sub-labels under that name. Then any workflow whose step names a port in <code>link:</code> can be started with <code>--link</code>, and that step claims a sub-label and comes back on an HTTPS address. The engine serves it on its own listener, choosing the certificate during the TLS handshake by server name, so the root name reaches the engine&#39;s API and console and each sub-label reaches one step. Publishing moves the container&#39;s port to loopback, so a published step answers only through its link.</p>
+<p>Claiming is local, so a workflow starts at the same speed with the platform unreachable. The platform records the address it observed the engine from, which is what makes it work from behind NAT. Certificates and licence run out together and a re-activation renews them.</p>
+<h2 id="who-gets-in">Who gets in</h2>
+<p>Local access over the Unix socket is trusted by file permissions, the same as Docker&#39;s own socket. Anything over TCP authenticates.</p>
+<p>The engine generates a master RSA key pair on first boot and registers its public half. The console&#39;s sign-in dialog takes the private key file and signs the server&#39;s challenge in the browser, so the key never leaves the device. For a quicker way in, <code>dxflow engine pair</code> prints a single-use code for the console to claim; nothing is written to disk, and the session carries only the permissions the command granted. More keys are registered per person with their own permission set, and a JWT can be minted directly for a script.</p>
+<p>Permissions are the same five words as the capabilities, so a key that may run workflows and read artifacts but not open a shell is one line in a file.</p>
+<h2 id="hpc-honestly">HPC, honestly</h2>
+<p>Singularity and Apptainer are first-class runtimes, with the GPU flag mapped and image pulls prefixed with <code>docker://</code> as those tools expect. There are differences the engine does not paper over: instances share the host&#39;s process and network namespace, so ports are not mapped, and a command is always required. Resource limits on those runtimes need cgroups v2 with systemd user delegation, and without it the runtime falls back to a mode that applies no limits at all, which the engine documents rather than hides.</p>
+<p>dxflow runs on the machine it is installed on. It does not submit to Slurm. On a cluster it belongs on a node you are allowed to keep a service on, or on the login node for the interactive tools, with the scheduler still handling the batch queue. That is a narrower claim than &quot;HPC orchestration&quot; and it is the accurate one.</p>
+<h2 id="the-agent">The agent</h2>
+<p>The part that is easy to dismiss as a checkbox and is not. The engine&#39;s agent has a fixed tool set that maps one to one onto what the CLI does: list, search, create, status, inspect, start, stop, logs, stats, files, read, upload and override. It is sent one system prompt and every tool on every turn, with the engine&#39;s own command tree rendered into the prompt so the commands it quotes are real. It works within the permissions of whoever is talking to it.</p>
+<p>Point it at a hosted model with an API key, or at a model served by an Ollama workflow on the same machine, and the conversation &quot;find me a FastQC workflow, run it over the files I just uploaded, and tell me if anything fails&quot; is the workflow. DiPhyx can pre-wire this at create time, billed from the same balance by the token.</p>
+<h2 id="where-it-is-going">Where it is going</h2>
+<p>The public roadmap has three stages. Today: unified compute operations, which is everything above. Next: AI-assisted operations, where the agent prepares environments, summarises logs, spots failures and suggests the next step. Long term: permissioned AI operators, agents assigned to servers or workflows with defined instructions and defined limits across a fleet.</p>
+<p>The stated principle behind the last stage is that AI should be useful, transparent and permissioned, operating within clear boundaries and human control. Given that the whole engine is built on a permission model that is five words long, it is a believable plan.</p>
+<h2 id="start">Start</h2>
+<pre><code class="hljs language-bash">curl -fsSL https://dxflow.ai/install.sh | <span class="hljs-built_in">sudo</span> bash
+<span class="hljs-built_in">sudo</span> dxflow boot up --console
+dxflow engine pair</code></pre>
+<p>Open the console, paste the code, and deploy something from the hub. If the machine has a card, make it Ollama. If it has a team behind it, make it <a href="/stories/private-ai-for-your-team/">Open UI</a>. If you do not have a machine, <a href="/stories/a-gpu-in-a-minute/">DiPhyx will lend you one by the hour</a> with the engine already on it.</p>
+
+      </div>
+    </article>
+
+    <section class="more">
+      <div class="wrap">
+        <h2>More from the blog</h2>
+        <div class="more-grid">
+
+          <a class="more-card" href="/stories/private-ai-for-your-team/">
+            <img src="/assets/covers/private-ai.svg" alt="" loading="lazy" width="1200" height="750">
+            <span class="eyebrow">Guides</span>
+            <span class="more-title">Private AI for your team, on a machine you control</span>
+            <time datetime="2026-09-15">September 15, 2026</time>
+          </a>
+          <a class="more-card" href="/stories/a-gpu-in-a-minute/">
+            <img src="/assets/covers/gpu-minute.svg" alt="" loading="lazy" width="1200" height="750">
+            <span class="eyebrow">Product</span>
+            <span class="more-title">A GPU in a minute: the cloud, without the cloud account</span>
+            <time datetime="2026-09-15">September 15, 2026</time>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  <section class="cta">
+    <div class="wrap cta-inner">
+      <div>
+        <h2>A GPU machine in about a minute.</h2>
+        <p>Sign in, add credit, pick a machine. Stop it when you are done and the meter stops with it.</p>
+      </div>
+      <div class="cta-actions">
+        <a class="button" href="https://diphyx.com" target="_blank" rel="noopener">Get started</a>
+        <a class="link-arrow" href="https://dxflow.ai" target="_blank" rel="noopener">Install dxflow</a>
+      </div>
+    </div>
+  </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="/"><img class="mark" src="/assets/mark.svg" alt="" width="28" height="28"><span class="brand-name">DiPhyx</span></a>
+          <p>GPU and HPC machines on demand, paid for by the hour.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>DiPhyx</h4>
+          <ul><li><a href="https://diphyx.com" target="_blank" rel="noopener">Home</a></li><li><a href="https://diphyx.com/about" target="_blank" rel="noopener">Why DiPhyx</a></li><li><a href="https://diphyx.com/pricing" target="_blank" rel="noopener">Pricing</a></li><li><a href="https://diphyx.com/contact" target="_blank" rel="noopener">Contact</a></li></ul>
+        </div>
+        <div class="footer-col">
+          <h4>dxflow</h4>
+          <ul><li><a href="https://dxflow.ai" target="_blank" rel="noopener">dxflow.ai</a></li><li><a href="https://dxflow.ai/docs" target="_blank" rel="noopener">Documentation</a></li><li><a href="https://github.com/dxflow-ai" target="_blank" rel="noopener">Workflow hub</a></li></ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul><li><a href="https://github.com/diphyx" target="_blank" rel="noopener">GitHub</a></li><li><a href="mailto:info@diphyx.com">info@diphyx.com</a></li><li><a href="https://diphyx.com/terms" target="_blank" rel="noopener">Terms</a></li><li><a href="https://diphyx.com/privacy" target="_blank" rel="noopener">Privacy</a></li></ul>
+        </div>
+      </div>
+      <div class="footer-base">
+        <span>© 2026 DiPhyx</span>
+        <a href="/feed.xml">RSS</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
