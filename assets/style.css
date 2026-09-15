@@ -367,7 +367,7 @@ a:hover .arrow .tip { transform: translateX(3px); }
 .footer-col a:hover { color: var(--title); }
 .footer-base {
   display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap;
-  margin: 48px var(--pad) 0; padding-top: 24px; border-top: 1px solid var(--line);
+  margin: 48px var(--pad) 0;
   color: var(--muted); font-size: 15px;
 }
 .footer-base a { color: var(--muted); }
