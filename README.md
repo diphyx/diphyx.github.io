@@ -1,14 +1,16 @@
 # diphyx.github.io
 
 The DiPhyx blog at <https://diphyx.github.io>, served by GitHub Pages straight from this
-branch. Plain HTML, no build step. The layout follows stripe.com/blog with DiPhyx colours.
+branch. Plain HTML, no build step. The layout, type and spacing follow stripe.com/blog;
+the colours are DiPhyx's. One token in `assets/style.css`, `--accent`, sets the link and
+label colour.
 
 ```
-index.html                       the blog index: category tabs and one card per story
+index.html                       the blog index: featured story, then one row per story
 stories/<name>/index.html        one folder per story, e.g. stories/a-gpu-in-a-minute/
 _template/index.html             skeleton for a new story
 assets/style.css                 the one stylesheet
-assets/covers/*.svg              cover illustration per story
+assets/covers/*.svg              cover illustration per story, square
 assets/mark.svg, favicon.png     brand
 feed.xml, sitemap.xml            hand-maintained lists of stories
 .nojekyll                        tells Pages to serve the files as they are
@@ -16,21 +18,21 @@ feed.xml, sitemap.xml            hand-maintained lists of stories
 
 ## Adding a story
 
-1. Copy `_template/index.html` into a new folder under `stories/` named after the story's URL, for
-   example `stories/my-story/index.html`, which is published at `/stories/my-story/`.
+1. Copy `_template/index.html` into a new folder under `stories/` named after the story's
+   URL, for example `stories/my-story/index.html`, published at `/stories/my-story/`.
 2. Fill in the placeholders in the `<head>` (title, description, canonical URL, cover) and
-   in the header of the article (category, title, subtitle, date, reading time). Write the
-   body as plain HTML inside `<div class="wrap narrow prose">`.
-3. Add a cover to `assets/covers/`. The existing ones are 1200×750 SVGs on a light grid
-   with the brand gradient; copy one and change the drawing.
-4. Add the story to `index.html`: copy an `<article class="post-row">` block and put it
-   at the top of the list. The first block in the list is the featured story and carries
-   the `featured` class and the subtitle; move that class to the new block.
+   in the article header (breadcrumb category, title, date, lead sentence). Write the body
+   as plain HTML inside `<section class="post-body">`. Paragraphs, headings, lists, quotes,
+   code blocks and tables are all styled.
+3. Add a cover to `assets/covers/`. The existing ones are square SVGs on a light grid with
+   the brand gradient; copy one and change the drawing.
+4. Put the story on `index.html`. The newest story is the `<article class="featured">`
+   card at the top; move the current featured story down into the list as an
+   `<article class="post-row">` (copy an existing row) and put the new story in the card.
 5. Add an `<item>` to `feed.xml` and a `<url>` to `sitemap.xml`.
 6. Optionally add the new story to the "More from the blog" section of the others.
 
-Categories are Product, Engineering and Guides. The index tabs filter on the
-`data-category` attribute of each card, so the value must match a tab exactly.
+Categories are Product, Engineering and Guides. They are labels only; there is no filter.
 
 ## Checking locally
 

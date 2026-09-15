@@ -1,12 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img" aria-label="A one-minute dial around a GPU chip, with sign in, credit and machine as the three steps">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="60 -165 1080 1080" role="img" aria-label="A one-minute dial around a GPU chip, with sign in, credit and machine as the three steps">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#f0f5fa"/></linearGradient>
     <linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff8a00"/><stop offset=".5" stop-color="#ffcf1a"/><stop offset="1" stop-color="#00c2ff"/></linearGradient>
     <radialGradient id="halo" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#00c2ff" stop-opacity=".18"/><stop offset="1" stop-color="#00c2ff" stop-opacity="0"/></radialGradient>
     <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#0a2540" stroke-opacity=".05"/></pattern>
   </defs>
-  <rect width="1200" height="750" fill="url(#bg)"/>
-  <rect width="1200" height="750" fill="url(#grid)"/>
+  <rect x="0" y="-225" width="1200" height="1200" fill="url(#bg)"/>
+  <rect x="0" y="-225" width="1200" height="1200" fill="url(#grid)"/>
   <circle cx="800" cy="375" r="330" fill="url(#halo)"/>
   <!-- steps -->
   <g font-family="SUSE, system-ui, sans-serif" fill="#0a2540">
