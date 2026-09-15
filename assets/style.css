@@ -9,8 +9,6 @@
   --paper: #ffffff;
   --paper-2: #f6f9fc;
   --line: #e6ebf1;
-  --guide-solid: rgba(66, 71, 112, 0.09);
-  --guide-dashed: rgba(66, 71, 112, 0.12);
   --gradient: linear-gradient(90deg, #ff8a00 0%, #ffcf1a 45%, #00c2ff 100%);
   --font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --mono: "Source Code Pro", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
@@ -45,21 +43,7 @@ time { color: var(--text); }
 
 .wrap { width: 100%; max-width: var(--layout); margin: 0 auto; padding: 0 var(--pad); }
 
-/* Section with vertical guides, like Stripe's Section--hasGuides */
 .section { position: relative; }
-.guides { position: absolute; inset: 0; pointer-events: none; }
-.guides .wrap { position: relative; height: 100%; }
-.guides span {
-  position: absolute; top: 0; bottom: 0; width: 1px;
-  background: linear-gradient(180deg, var(--guide-dashed), var(--guide-dashed) 50%, transparent 0, transparent);
-  background-size: 1px 8px;
-}
-.guides span:nth-child(1) { left: var(--pad); background: var(--guide-solid); }
-.guides span:nth-child(2) { left: calc(var(--pad) + (100% - 2 * var(--pad)) * 0.25); display: none; }
-.guides span:nth-child(3) { left: calc(var(--pad) + (100% - 2 * var(--pad)) * 0.5); }
-.guides span:nth-child(4) { left: calc(var(--pad) + (100% - 2 * var(--pad)) * 0.75); display: none; }
-.guides span:nth-child(5) { right: var(--pad); background: var(--guide-solid); }
-@media (min-width: 900px) { .guides span:nth-child(2), .guides span:nth-child(4) { display: block; } }
 .section > .wrap { position: relative; }
 
 /* Arrow used after "Read more" and on buttons (Stripe's HoverArrow) */
