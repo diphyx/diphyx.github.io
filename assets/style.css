@@ -186,7 +186,7 @@ a:hover .arrow .tip { transform: translateX(3px); }
 
 /* ---------------------------------------------------------------- post rows */
 
-.posts-wrap { padding: 56px 0 110px; display: grid; row-gap: clamp(60px, 8vw, 112px); }
+.posts-wrap { padding: 56px 0 72px; display: grid; row-gap: clamp(60px, 8vw, 112px); }
 .post-row {
   display: grid; grid-template-columns: repeat(1, 1fr); gap: 16px 0;
   justify-items: start; align-items: start;
@@ -324,7 +324,8 @@ a:hover .arrow .tip { transform: translateX(3px); }
 
 /* ---------------------------------------------------------------- CTA band */
 
-.cta-wrap { padding: 96px 0 80px; }
+/* The band top is skewed 6°; its rise is tan(6°) × the viewport width, so pad past it. */
+.cta-wrap { padding: calc(100vw * 0.105 + 72px) 0 80px; }
 .cta { display: grid; gap: 24px 0; grid-template-columns: repeat(1, 1fr); align-items: end; }
 .cta > * { padding: 0 var(--pad); }
 .cta h2 { font: 600 34px/1.294 var(--font); letter-spacing: -0.1px; }
