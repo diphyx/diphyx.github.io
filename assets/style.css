@@ -80,13 +80,15 @@ a:hover .arrow .tip { transform: translateX(3px); }
 .brand:hover { color: var(--title); opacity: 0.7; }
 .brand .mark { width: 26px; height: 26px; }
 .brand-name { font-weight: 600; font-size: 19px; letter-spacing: -0.2px; }
-.site-nav { display: none; gap: 4px; }
-.site-nav a { padding: 4px 12px; color: var(--title); font-weight: 500; font-size: 15px; }
-.site-nav a:hover { opacity: 0.6; }
-.header-right { margin-left: auto; display: flex; align-items: center; gap: 16px; }
-.header-right .sign { display: none; align-items: center; color: var(--title); font-weight: 500; }
-.header-right .sign:hover { opacity: 0.6; }
-@media (min-width: 900px) { .site-nav { display: flex; } .header-right .sign { display: inline-flex; } }
+.header-right { margin-left: auto; display: flex; align-items: center; }
+/* Same button as the Workspace button on diphyx.com: honey gradient, dark text, 6px radius */
+.button-workspace {
+  padding: 6px 12px 6px 14px; border-radius: 6px;
+  background: linear-gradient(135deg, #ffc93d, #ffb800); color: #161a2e;
+  font-weight: 500; box-shadow: none;
+}
+.button-workspace:hover { color: #161a2e; opacity: 1; filter: brightness(0.95); }
+.button-workspace:active { filter: brightness(0.9); }
 
 /* ---------------------------------------------------------------- angled light band (index top, CTA) */
 
