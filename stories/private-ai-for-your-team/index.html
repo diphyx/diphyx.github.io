@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Source+Code+Pro:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/style.css">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Private AI for your team, on a machine you control","description":"Open WebUI and dxflow give every person on the team a ChatGPT-style page and an API key, backed by open models on a GPU you rent by the hour or already own. Nothing you type leaves the machine.","datePublished":"2026-09-15T12:00:00.000Z","author":[{"@type":"Person","name":"Babak Goshayeshi"}],"publisher":{"@type":"Organization","name":"DiPhyx"},"mainEntityOfPage":"https://diphyx.github.io/stories/private-ai-for-your-team/","image":"https://diphyx.github.io/assets/covers/private-ai.svg"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Private AI for your team, on a machine you control","description":"Open WebUI and dxflow give every person on the team a ChatGPT-style page and an API key, backed by open models on a GPU you rent by the hour or already own. Nothing you type leaves the machine.","datePublished":"2026-09-15T12:00:00.000Z","author":[{"@type":"Person","name":"Babak Goshayeshi"}],"publisher":{"@type":"Organization","name":"DiPhyx"},"mainEntityOfPage":"https://diphyx.github.io/stories/private-ai-for-your-team/","image":"https://diphyx.github.io/stories/private-ai-for-your-team/cover.svg"}</script>
 
 </head>
 <body>
@@ -78,7 +78,7 @@
 <li><strong>DiPhyx</strong> is the quickest way to get a GPU machine with dxflow on it: about a minute, prepaid by the hour, no cloud account.</li>
 </ul>
 <p>The hub workflow that bundles the first two is called <strong>Open UI</strong>. The rest of this post is about turning it on, on a machine you rent and on a machine you own.</p>
-<figure class="l-page"><img src="/assets/covers/private-ai.svg" alt="" width="1200" height="1200"><figcaption>Every request reaches the GPU through one gate: accounts, groups and per-model permissions in Open WebUI, on a machine you control.</figcaption></figure>
+<figure class="l-page"><img src="/stories/private-ai-for-your-team/cover.svg" alt="" width="1200" height="1200"><figcaption>Every request reaches the GPU through one gate: accounts, groups and per-model permissions in Open WebUI, on a machine you control.</figcaption></figure>
 <h2 id="what-you-get">What you get</h2>
 <p>One port, and it asks who is asking.</p>
 <p>Inside the container, Ollama listens on the loopback interface only. No port reaches it from outside. Every request arrives on the web port, where Open WebUI checks the account, the group and the model permission before anything reaches the GPU. That is the single design decision the whole workflow is built around, and it is the reason a bare Ollama server, which has no authentication at all, should never face a network on its own.</p>
@@ -96,16 +96,16 @@
 <p>This is the path for a team with no GPU in the building, or a team that wants one for a month before deciding.</p>
 <ol>
 <li><strong>Sign in to DiPhyx</strong> with Google, GitHub or LinkedIn and put some credit on the balance.
-<figure class="shot"><img src="/assets/images/private-ai/login.png" alt="" loading="lazy"><figcaption>Sign in with Google, GitHub or LinkedIn. There is no password to invent.</figcaption></figure>
+<figure class="shot"><img src="/stories/private-ai-for-your-team/login.png" alt="" loading="lazy"><figcaption>Sign in with Google, GitHub or LinkedIn. There is no password to invent.</figcaption></figure>
 </li>
 <li><strong>Pick a GPU machine.</strong> The T4 machines are the entry point. For 7B and 8B models with a few concurrent users, a 16 GB T4 is enough. For larger models or more people, take the L4 with 24 GB.
-<figure class="shot"><img src="/assets/images/private-ai/machine.png" alt="" loading="lazy"><figcaption>The machine table inside the create form, with the G4dn XLarge and its Tesla T4 picked. Prices are per hour, per day and per month.</figcaption></figure>
+<figure class="shot"><img src="/stories/private-ai-for-your-team/machine.png" alt="" loading="lazy"><figcaption>The machine table inside the create form, with the G4dn XLarge and its Tesla T4 picked. Prices are per hour, per day and per month.</figcaption></figure>
 </li>
 <li><strong>In Setup, switch on &quot;Install dxflow with the server&quot;</strong> and pick <strong>Open UI</strong> as the instant workflow. Raise the disk if you plan to keep several models; the workflow asks for 100 GB of storage.
-<figure class="shot"><img src="/assets/images/private-ai/setup.png" alt="" loading="lazy"><figcaption>The Setup step: the dxflow toggle on, Open UI chosen as the instant workflow, and the disk raised for the model store.</figcaption></figure>
+<figure class="shot"><img src="/stories/private-ai-for-your-team/setup.png" alt="" loading="lazy"><figcaption>The Setup step: the dxflow toggle on, Open UI chosen as the instant workflow, and the disk raised for the model store.</figcaption></figure>
 </li>
 <li><strong>Create.</strong> The machine boots, installs Docker and the dxflow engine, activates its licence, starts the console, installs the GPU driver and container runtime because the machine has a card, and then creates and starts the Open UI workflow on its own HTTPS address. All of it happens on first boot without you doing anything.
-<figure class="shot"><img src="/assets/images/private-ai/review.png" alt="" loading="lazy"><figcaption>The Review step shows what the first boot will do and what the machine costs while it runs. Create starts it.</figcaption></figure>
+<figure class="shot"><img src="/stories/private-ai-for-your-team/review.png" alt="" loading="lazy"><figcaption>The Review step shows what the first boot will do and what the machine costs while it runs. Create starts it.</figcaption></figure>
 </li>
 <li><strong>Open it.</strong> The server page shows the console link and the workflow link. The workflow link is a subdomain of the machine&#39;s own link, with a certificate already on it. The admin account&#39;s password is drawn per server by DiPhyx and shown on the server page.</li>
 </ol>
@@ -188,13 +188,13 @@ reply = client.chat.completions.create(
       <h2>More from the blog</h2>
       <div class="more-grid">
         <a class="more-card" href="/stories/what-is-dxflow/">
-          <span class="figure"><img src="/assets/covers/dxflow.svg" alt="" width="1200" height="1200" loading="lazy"></span>
+          <span class="figure"><img src="/stories/what-is-dxflow/cover.svg" alt="" width="1200" height="1200" loading="lazy"></span>
           <span class="category">Engineering</span>
           <span class="more-title">One binary, four runtimes, any machine: what dxflow is</span>
           <time datetime="2026-09-15">September 15, 2026</time>
         </a>
         <a class="more-card" href="/stories/a-gpu-in-a-minute/">
-          <span class="figure"><img src="/assets/covers/gpu-minute.svg" alt="" width="1200" height="1200" loading="lazy"></span>
+          <span class="figure"><img src="/stories/a-gpu-in-a-minute/cover.svg" alt="" width="1200" height="1200" loading="lazy"></span>
           <span class="category">Product</span>
           <span class="more-title">A GPU in a minute: the cloud, without the cloud account</span>
           <time datetime="2026-09-15">September 15, 2026</time>

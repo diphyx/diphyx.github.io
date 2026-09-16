@@ -7,10 +7,9 @@ label colour.
 
 ```
 index.html                       the blog index: featured story, then one row per story
-stories/<name>/index.html        one folder per story, e.g. stories/a-gpu-in-a-minute/
+stories/<name>/                  one folder per story: index.html, cover.svg and its images
 _template/index.html             skeleton for a new story
-assets/style.css                 the one stylesheet
-assets/covers/*.svg              cover illustration per story, square
+assets/                          the main page's assets only: stylesheet, logo, favicon, preview
 assets/mark.svg, favicon.png     brand
 feed.xml, sitemap.xml            hand-maintained lists of stories
 .nojekyll                        tells Pages to serve the files as they are
@@ -26,8 +25,9 @@ feed.xml, sitemap.xml            hand-maintained lists of stories
    Write the body as plain HTML inside `<div class="d-text">`. Paragraphs, headings, lists,
    quotes, code blocks and tables are all styled. A `<figure class="l-page">` spreads wider
    than the text; keep those below the introduction so they do not overlap the Contents list.
-3. Add a cover to `assets/covers/`. The existing ones are square SVGs on a light grid with
-   the brand gradient; copy one and change the drawing.
+3. Add `cover.svg` to the story's folder, and any screenshots next to it. The existing covers
+   are square SVGs on a light grid with the brand gradient; copy one and change the drawing.
+   A story's images live in its own folder; `assets/` is only for the main page.
 4. Put the story on `index.html`. The newest story is the `<article class="featured">`
    card at the top; move the current featured story down into the list as an
    `<article class="post-row">` (copy an existing row) and put the new story in the card.
