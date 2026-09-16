@@ -95,10 +95,18 @@
 <h2 id="path-a-a-diphyx-server-in-about-a-minute">Path A: a DiPhyx server, in about a minute</h2>
 <p>This is the path for a team with no GPU in the building, or a team that wants one for a month before deciding.</p>
 <ol>
-<li><strong>Sign in to DiPhyx</strong> with Google, GitHub or LinkedIn and put some credit on the balance.</li>
-<li><strong>Pick a GPU machine.</strong> The T4 machines are the entry point. For 7B and 8B models with a few concurrent users, a 16 GB T4 is enough. For larger models or more people, take the L4 with 24 GB.</li>
-<li><strong>In Setup, switch on &quot;Install dxflow with the server&quot;</strong> and pick <strong>Open UI</strong> as the instant workflow. Raise the disk if you plan to keep several models; the workflow asks for 100 GB of storage.</li>
-<li><strong>Create.</strong> The machine boots, installs Docker and the dxflow engine, activates its licence, starts the console, installs the GPU driver and container runtime because the machine has a card, and then creates and starts the Open UI workflow on its own HTTPS address. All of it happens on first boot without you doing anything.</li>
+<li><strong>Sign in to DiPhyx</strong> with Google, GitHub or LinkedIn and put some credit on the balance.
+<figure class="shot"><img src="/assets/images/private-ai/login.png" alt="" loading="lazy"><figcaption>Sign in with Google, GitHub or LinkedIn. There is no password to invent.</figcaption></figure>
+</li>
+<li><strong>Pick a GPU machine.</strong> The T4 machines are the entry point. For 7B and 8B models with a few concurrent users, a 16 GB T4 is enough. For larger models or more people, take the L4 with 24 GB.
+<figure class="shot"><img src="/assets/images/private-ai/machine.png" alt="" loading="lazy"><figcaption>The machine table inside the create form, with the G4dn XLarge and its Tesla T4 picked. Prices are per hour, per day and per month.</figcaption></figure>
+</li>
+<li><strong>In Setup, switch on &quot;Install dxflow with the server&quot;</strong> and pick <strong>Open UI</strong> as the instant workflow. Raise the disk if you plan to keep several models; the workflow asks for 100 GB of storage.
+<figure class="shot"><img src="/assets/images/private-ai/setup.png" alt="" loading="lazy"><figcaption>The Setup step: the dxflow toggle on, Open UI chosen as the instant workflow, and the disk raised for the model store.</figcaption></figure>
+</li>
+<li><strong>Create.</strong> The machine boots, installs Docker and the dxflow engine, activates its licence, starts the console, installs the GPU driver and container runtime because the machine has a card, and then creates and starts the Open UI workflow on its own HTTPS address. All of it happens on first boot without you doing anything.
+<figure class="shot"><img src="/assets/images/private-ai/review.png" alt="" loading="lazy"><figcaption>The Review step shows what the first boot will do and what the machine costs while it runs. Create starts it.</figcaption></figure>
+</li>
 <li><strong>Open it.</strong> The server page shows the console link and the workflow link. The workflow link is a subdomain of the machine&#39;s own link, with a certificate already on it. The admin account&#39;s password is drawn per server by DiPhyx and shown on the server page.</li>
 </ol>
 <p>Sign in as the administrator, and you are at step &quot;Add your team&quot; below.</p>

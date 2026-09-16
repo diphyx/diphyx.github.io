@@ -281,6 +281,8 @@ a.author-name:hover { color: var(--title); opacity: 0.6; }
 .d-text th { font-weight: 500; color: var(--title); }
 .d-text figure { margin: 1.5em 0 2em; }
 .d-text figure img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-radius: 6px; background: var(--paper-2); }
+.d-text figure.shot { margin: 1em 0 1.5em; }
+.d-text figure.shot img { aspect-ratio: auto; object-fit: contain; border-radius: 8px; border: 1px solid var(--line); box-shadow: var(--shadow-sm); background: #fff; }
 .d-text figcaption { margin-top: 12px; font-size: 13px; line-height: 1.6; color: rgba(0, 0, 0, 0.6); text-align: center; }
 /* figures may break out to the page width: two columns and two gaps each side */
 .d-text .l-page { margin-left: -184px; margin-right: -184px; }
