@@ -37,29 +37,41 @@
     </header>
   </div>
   <main>
-    <nav class="crumbs wrap" aria-label="Breadcrumb">
-        <ol><li><a href="/">Blog</a></li><li>Engineering</li></ol>
-        <a class="aside" href="https://github.com/diphyx" target="_blank" rel="noopener">DiPhyx on GitHub<svg class="arrow" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><g fill-rule="evenodd"><path class="line" d="M0 5h7"/><path class="tip" d="M1 1l4 4-4 4"/></g></svg></a>
+    <header class="d-title">
+      <div>
+        <h1>One binary, four runtimes, any machine: what dxflow is</h1>
+        <p>The engine under DiPhyx runs the same on a laptop, a GPU server, an HPC node and a cloud VM. Here is what it does, why it is one file, and what a workflow looks like.</p>
+      </div>
+    </header>
+    <div class="d-byline">
+      <div class="byline">
+        <div><h5>Author</h5><p><a href="https://www.linkedin.com/in/bgoshayeshi/" target="_blank" rel="noopener">Babak Goshayeshi</a></p></div>
+        <div><h5>Role</h5><p>CTO, DiPhyx</p></div>
+        <div><h5>Published</h5><p><time datetime="2026-09-15">Sept. 15, 2026</time></p></div>
+        <div><h5>Reading time</h5><p>8 min</p></div>
+      </div>
+    </div>
+    <article class="d-article">
+      <nav class="d-contents" aria-label="Contents">
+        <h3>Contents</h3>
+        <ul>
+          <li><a href="#five-things-one-engine">Five things, one engine</a></li>
+          <li><a href="#why-one-binary">Why one binary</a></li>
+          <li><a href="#a-workflow-in-full">A workflow, in full</a></li>
+          <li><a href="#the-hub">The hub</a></li>
+          <li><a href="#publishing-a-step-links">Publishing a step: links</a></li>
+          <li><a href="#who-gets-in">Who gets in</a></li>
+          <li><a href="#hpc-honestly">HPC, honestly</a></li>
+          <li><a href="#the-agent">The agent</a></li>
+          <li><a href="#where-it-is-going">Where it is going</a></li>
+          <li><a href="#start">Start</a></li>
+        </ul>
       </nav>
-    <article class="section post-section">
-      <div class="wrap">
-        <header class="post-hero">
-          <h1 class="title">One binary, four runtimes, any machine: what dxflow is</h1>
-          <div class="meta"><time class="anchored" datetime="2026-09-15">September 15, 2026</time></div>
-          <div class="authors"><div class="author">
-            <span class="avatar" aria-hidden="true">BG</span>
-            <div class="author-text">
-              <span class="author-name">Babak Goshayeshi</span>
-              <span class="author-role">DiPhyx</span>
-            </div>
-          </div></div>
-        </header>
-        <section class="post-body">
-          <p class="lead">The engine under DiPhyx runs the same on a laptop, a GPU server, an HPC node and a cloud VM. Here is what it does, why it is one file, and what a workflow looks like.</p>
-          <span class="figure"><img src="/assets/covers/dxflow.svg" alt="" width="1200" height="1200"></span>
+      <div class="d-text">
 <p>Most compute a technical team touches is not one kind of machine. There is a laptop, a workstation with a card in it, a cloud VM someone rented for a project, and a cluster with a scheduler and a queue. Each one has its own way of running a container, its own way of getting files on and off, its own way of opening a port, and its own idea of who you are.</p>
 <p>dxflow&#39;s premise is that this should be one way. Its own tagline: a single binary that turns a machine into a node. Install it on any of those machines and they all answer the same CLI, the same REST API and the same web console. Its version at the time of writing is 2.4.0, and it is free to use.</p>
 <p>Here is what that binary does.</p>
+<figure class="l-page"><img src="/assets/covers/dxflow.svg" alt="" width="1200" height="1200"></figure>
 <h2 id="five-things-one-engine">Five things, one engine</h2>
 <p>The homepage counts it out: one binary, three interfaces, four runtimes, five capabilities. The capabilities are the useful part.</p>
 <p><strong>Workflow.</strong> A YAML file names one or more steps, each a container image with a command, environment, volumes, ports and resource limits. Steps run in order or in parallel. The engine creates the workflow, starts it, streams its logs, records its events and per-step resource use, and stops it. State survives an engine restart.</p>
@@ -138,7 +150,6 @@ dxflow license activate</code></pre>
 <span class="hljs-built_in">sudo</span> dxflow boot up --console
 dxflow engine pair</code></pre>
 <p>Open the console, paste the code, and deploy something from the hub. If the machine has a card, make it Ollama. If it has a team behind it, make it <a href="/stories/private-ai-for-your-team/">Open UI</a>. If you do not have a machine, <a href="/stories/a-gpu-in-a-minute/">DiPhyx will lend you one by the hour</a> with the engine already on it.</p>
-        </section>
       </div>
     </article>
   </main>

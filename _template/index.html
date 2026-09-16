@@ -37,27 +37,30 @@
     </header>
   </div>
   <main>
-    <nav class="crumbs wrap" aria-label="Breadcrumb">
-        <ol><li><a href="/">Blog</a></li><li>Product</li> <!-- Product, Engineering or Guides --></ol>
-        <a class="aside" href="https://github.com/diphyx" target="_blank" rel="noopener">DiPhyx on GitHub<svg class="arrow" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><g fill-rule="evenodd"><path class="line" d="M0 5h7"/><path class="tip" d="M1 1l4 4-4 4"/></g></svg></a>
+    <header class="d-title">
+      <div>
+        <h1>STORY TITLE</h1>
+        <p>ONE OR TWO SENTENCES SHOWN UNDER THE TITLE AND ON THE INDEX.</p>
+      </div>
+    </header>
+    <div class="d-byline">
+      <div class="byline">
+        <div><h5>Author</h5><p><a href="https://www.linkedin.com/in/bgoshayeshi/" target="_blank" rel="noopener">Babak Goshayeshi</a></p></div>
+        <div><h5>Role</h5><p>CTO, DiPhyx</p></div>
+        <div><h5>Published</h5><p><time datetime="2026-01-01">Jan. 1, 2026</time></p></div>
+        <div><h5>Reading time</h5><p>N min</p></div>
+      </div>
+    </div>
+    <article class="d-article">
+      <nav class="d-contents" aria-label="Contents">
+        <h3>Contents</h3>
+        <ul>
+          <li><a href="#a-section">A section</a></li>
+        </ul>
       </nav>
-    <article class="section post-section">
-      <div class="wrap">
-        <header class="post-hero">
-          <h1 class="title">STORY TITLE</h1>
-          <div class="meta"><time class="anchored" datetime="2026-01-01">January 1, 2026</time></div>
-          <div class="authors"><div class="author">
-            <span class="avatar" aria-hidden="true">BG</span>
-            <div class="author-text">
-              <span class="author-name">Babak Goshayeshi</span>
-              <span class="author-role">DiPhyx</span>
-            </div>
-          </div></div>
-        </header>
-        <section class="post-body">
-          <p class="lead">ONE OR TWO SENTENCES SHOWN UNDER THE TITLE AND ON THE INDEX.</p>
-          <span class="figure"><img src="/assets/covers/story-cover.svg" alt="" width="1200" height="1200"></span>
+      <div class="d-text">
 <p>Opening paragraph. Body text is plain HTML: <code>&lt;p&gt;</code>, <code>&lt;h2&gt;</code>, <code>&lt;ul&gt;</code>, <code>&lt;blockquote&gt;</code>, <code>&lt;pre&gt;&lt;code&gt;</code> and tables all have styles in <code>/assets/style.css</code>.</p>
+<figure class="l-page"><img src="/assets/covers/story-cover.svg" alt="" width="1200" height="1200"><figcaption>CAPTION FOR THE FIGURE.</figcaption></figure>
 <h2 id="a-section">A section</h2>
 <p>Link to another story with its folder: <a href="/stories/what-is-dxflow/">what dxflow is</a>. External links open in a new tab: <a href="https://diphyx.com" target="_blank" rel="noopener">diphyx.com</a>.</p>
 <ul>
@@ -71,7 +74,6 @@ sudo dxflow boot up --console</code></pre>
 </blockquote>
 <div class="table"><table><thead><tr><th>Column</th><th>Column</th></tr></thead><tbody><tr><td>Cell</td><td>Cell</td></tr></tbody></table></div>
 <p>Closing paragraph.</p>
-        </section>
       </div>
     </article>
   </main>

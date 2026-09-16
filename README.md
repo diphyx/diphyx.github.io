@@ -1,8 +1,8 @@
 # diphyx.github.io
 
 The DiPhyx blog at <https://diphyx.github.io>, served by GitHub Pages straight from this
-branch. Plain HTML, no build step. The layout, type and spacing follow stripe.com/blog;
-the colours are DiPhyx's. One token in `assets/style.css`, `--accent`, sets the link and
+branch. Plain HTML, no build step. The index follows stripe.com/blog and the article pages follow
+distill.pub for placement; the colours are DiPhyx's. One token in `assets/style.css`, `--accent`, sets the link and
 label colour.
 
 ```
@@ -21,9 +21,11 @@ feed.xml, sitemap.xml            hand-maintained lists of stories
 1. Copy `_template/index.html` into a new folder under `stories/` named after the story's
    URL, for example `stories/my-story/index.html`, published at `/stories/my-story/`.
 2. Fill in the placeholders in the `<head>` (title, description, canonical URL, cover) and
-   in the article header (breadcrumb category, title, date, lead sentence). Write the body
-   as plain HTML inside `<section class="post-body">`. Paragraphs, headings, lists, quotes,
-   code blocks and tables are all styled.
+   in the article: title and lead sentence, the byline (author, role, published date,
+   reading time at about 220 words a minute), and the Contents list, one link per `<h2>`.
+   Write the body as plain HTML inside `<div class="d-text">`. Paragraphs, headings, lists,
+   quotes, code blocks and tables are all styled. A `<figure class="l-page">` spreads wider
+   than the text; keep those below the introduction so they do not overlap the Contents list.
 3. Add a cover to `assets/covers/`. The existing ones are square SVGs on a light grid with
    the brand gradient; copy one and change the drawing.
 4. Put the story on `index.html`. The newest story is the `<article class="featured">`

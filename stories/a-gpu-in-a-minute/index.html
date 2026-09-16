@@ -37,26 +37,34 @@
     </header>
   </div>
   <main>
-    <nav class="crumbs wrap" aria-label="Breadcrumb">
-        <ol><li><a href="/">Blog</a></li><li>Product</li></ol>
-        <a class="aside" href="https://github.com/diphyx" target="_blank" rel="noopener">DiPhyx on GitHub<svg class="arrow" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><g fill-rule="evenodd"><path class="line" d="M0 5h7"/><path class="tip" d="M1 1l4 4-4 4"/></g></svg></a>
+    <header class="d-title">
+      <div>
+        <h1>A GPU in a minute: the cloud, without the cloud account</h1>
+        <p>How DiPhyx turns &#x27;I need a machine for an afternoon&#x27; into one click, one hour, one line on a prepaid balance.</p>
+      </div>
+    </header>
+    <div class="d-byline">
+      <div class="byline">
+        <div><h5>Author</h5><p><a href="https://www.linkedin.com/in/bgoshayeshi/" target="_blank" rel="noopener">Babak Goshayeshi</a></p></div>
+        <div><h5>Role</h5><p>CTO, DiPhyx</p></div>
+        <div><h5>Published</h5><p><time datetime="2026-09-15">Sept. 15, 2026</time></p></div>
+        <div><h5>Reading time</h5><p>6 min</p></div>
+      </div>
+    </div>
+    <article class="d-article">
+      <nav class="d-contents" aria-label="Contents">
+        <h3>Contents</h3>
+        <ul>
+          <li><a href="#four-steps-and-the-slow-one-is-the-cloud">Four steps, and the slow one is the cloud</a></li>
+          <li><a href="#what-quot-a-minute-quot-actually-means">What &quot;a minute&quot; actually means</a></li>
+          <li><a href="#the-money-model-in-plain-words">The money model, in plain words</a></li>
+          <li><a href="#what-a-gpu-machine-arrives-with">What a GPU machine arrives with</a></li>
+          <li><a href="#the-one-switch-that-changes-everything-install-dxflow">The one switch that changes everything: install dxflow</a></li>
+          <li><a href="#what-it-is-not">What it is not</a></li>
+          <li><a href="#try-it">Try it</a></li>
+        </ul>
       </nav>
-    <article class="section post-section">
-      <div class="wrap">
-        <header class="post-hero">
-          <h1 class="title">A GPU in a minute: the cloud, without the cloud account</h1>
-          <div class="meta"><time class="anchored" datetime="2026-09-15">September 15, 2026</time></div>
-          <div class="authors"><div class="author">
-            <span class="avatar" aria-hidden="true">BG</span>
-            <div class="author-text">
-              <span class="author-name">Babak Goshayeshi</span>
-              <span class="author-role">DiPhyx</span>
-            </div>
-          </div></div>
-        </header>
-        <section class="post-body">
-          <p class="lead">How DiPhyx turns &#x27;I need a machine for an afternoon&#x27; into one click, one hour, one line on a prepaid balance.</p>
-          <span class="figure"><img src="/assets/covers/gpu-minute.svg" alt="" width="1200" height="1200"></span>
+      <div class="d-text">
 <p>You want a machine with a GPU for an afternoon. Maybe a model to fine-tune, a molecular dynamics run that will not finish on your laptop, a mesh that ParaView chokes on. What stands between you and that machine is not money. It is an account.</p>
 <p>The cloud wants a billing profile, an IAM user, a key pair, a VPC, a security group, and a quota request for the GPU family you want, which a support agent will approve in one to three business days. By the time it is all in place the afternoon is over, and you now own a cloud account you will be paying for in small, surprising ways for years.</p>
 <p>DiPhyx exists to remove that account from the path. Its own description of the product fits in four sentences:</p>
@@ -64,6 +72,7 @@
 <p>A person signs up. They buy credit. One minute later they have a machine running on AWS, GCP or Azure. They stop it when they finish.</p>
 </blockquote>
 <p>That is the whole product. Everything else is a consequence of taking those four sentences seriously.</p>
+<figure class="l-page"><img src="/assets/covers/gpu-minute.svg" alt="" width="1200" height="1200"></figure>
 <h2 id="four-steps-and-the-slow-one-is-the-cloud">Four steps, and the slow one is the cloud</h2>
 <ol>
 <li><strong>Sign in.</strong> OAuth only: Google, GitHub or LinkedIn. There is no password to invent. A new account arrives with a small amount of free credit so the first machine costs nothing.</li>
@@ -105,7 +114,6 @@
 <h2 id="try-it">Try it</h2>
 <p>Sign in, spend the free credit on the smallest machine, and stop it. Then do it again with a T4 and the dxflow toggle on, pick Jupyter as the instant workflow, and open it from the link on the server page. The afternoon you were going to spend on IAM is still yours.</p>
 <p><em>Next in this series: <a href="/stories/what-is-dxflow/">What dxflow is, and why it fits on a Raspberry Pi and a supercomputer</a>, and the one people ask for most: <a href="/stories/private-ai-for-your-team/">Private AI for your team, on your machine</a>.</em></p>
-        </section>
       </div>
     </article>
   </main>
