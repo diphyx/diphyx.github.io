@@ -78,11 +78,17 @@ a:hover .arrow .tip { transform: translateX(3px); }
 
 .site-header { position: relative; z-index: 5; }
 .site-header .wrap { display: flex; align-items: center; height: 60px; gap: 8px; }
-.brand { display: inline-flex; align-items: center; gap: 8px; color: var(--title); margin-right: 8px; }
+.brand { display: inline-flex; align-items: center; gap: 8px; color: var(--title); flex: none; }
+.header-crumbs { display: flex; align-items: center; gap: 8px; font-weight: 500; font-size: 15px; color: var(--text); min-width: 0; flex: 1 1 auto; }
+.header-crumbs .sep { color: #c2ccd9; font-weight: 400; }
+.header-crumbs a { color: var(--title); }
+.header-crumbs a:hover { opacity: 0.6; }
+.header-crumbs span:not(.sep) { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .brand:hover { color: var(--title); opacity: 0.7; }
 .brand .mark { width: 26px; height: 26px; }
 .brand-name { font-weight: 600; font-size: 19px; letter-spacing: -0.2px; }
-.header-right { margin-left: auto; display: flex; align-items: center; }
+.header-right { margin-left: auto; display: flex; align-items: center; flex: none; }
+@media (max-width: 520px) { .header-crumbs span:nth-child(3), .header-crumbs span:nth-child(4) { display: none; } }
 /* Same button as the Workspace button on diphyx.com: honey gradient, dark text, 6px radius */
 .button-workspace {
   padding: 6px 12px 6px 14px; border-radius: 6px;
@@ -116,15 +122,6 @@ a:hover .arrow .tip { transform: translateX(3px); }
 }
 .band--bottom::before { top: 0; bottom: -600px; transform-origin: 100% 0; }
 
-/* ---------------------------------------------------------------- breadcrumb row */
-
-.crumbs { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding: 16px 0; }
-.crumbs ol { display: flex; align-items: center; list-style: none; margin: 0; padding: 0 var(--pad); font: 500 18px/28px var(--font); letter-spacing: 0; }
-.crumbs li + li::before { content: "/"; color: #c2ccd9; margin: 0 6px 0 10px; }
-.crumbs li a { color: var(--accent); }
-.crumbs li a:hover { color: var(--title); }
-.crumbs .aside { display: inline-flex; align-items: center; padding: 0 var(--pad); color: var(--accent); font-weight: 500; }
-.crumbs .aside:hover { color: var(--title); }
 
 /* ---------------------------------------------------------------- featured card */
 
