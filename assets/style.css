@@ -15,7 +15,9 @@
   --layout: 1080px;
   --pad: 16px;
   --shadow-xs: 0 2px 5px -1px rgba(50, 50, 93, 0.25), 0 1px 3px -1px rgba(0, 0, 0, 0.3);
+  --shadow-sm: 0 6px 12px -2px rgba(50, 50, 93, 0.25), 0 3px 7px -3px rgba(0, 0, 0, 0.3);
   --shadow-md: 0 13px 27px -5px rgba(50, 50, 93, 0.25), 0 8px 16px -8px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 30px 60px -12px rgba(50, 50, 93, 0.25), 0 18px 36px -18px rgba(0, 0, 0, 0.3);
   --shadow-xl: 0 50px 100px -20px rgba(50, 50, 93, 0.25), 0 30px 60px -30px rgba(0, 0, 0, 0.3);
   --radius: 8px;
   --angle: -6deg;
@@ -146,7 +148,7 @@ a:hover .arrow .tip { transform: translateX(3px); }
 .featured .title a { color: var(--title); }
 .featured .title a:hover { opacity: 0.7; }
 .excerpt { font: 400 15px/1.6 var(--font); letter-spacing: 0.2px; color: var(--text); }
-.figure { border-radius: 4px; overflow: hidden; background: var(--paper-2); }
+.figure { display: block; border-radius: 4px; overflow: hidden; background: var(--paper-2); }
 .figure img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; }
 @media (min-width: 900px) {
   .featured-wrap { padding: 40px 0 160px; }
@@ -206,7 +208,8 @@ a:hover .arrow .tip { transform: translateX(3px); }
 .post-row .title a { color: var(--title); }
 .post-row .title a:hover { opacity: 0.7; }
 .post-row .date { font: 400 15px/1.6 var(--font); color: var(--text); }
-.post-row .figure { box-shadow: var(--shadow-md); border-radius: var(--radius); }
+/* Stripe's BlogImageCard: small shadow on phones, large on desktop */
+.post-row .figure { box-shadow: var(--shadow-sm); border-radius: var(--radius); margin: 8px 0; }
 .posts-empty { padding: 0 var(--pad); color: var(--muted); }
 @media (min-width: 600px) {
   .post-row {
@@ -227,6 +230,7 @@ a:hover .arrow .tip { transform: translateX(3px); }
   .post-row .title { font-size: 38px; line-height: 1.263; letter-spacing: -0.2px; padding-right: 64px; }
   .post-row .excerpt { padding-right: 32px; }
   .post-row .figure-cell { padding-right: 0; }
+  .post-row .figure { box-shadow: var(--shadow-lg); }
 }
 
 /* ---------------------------------------------------------------- post page */
