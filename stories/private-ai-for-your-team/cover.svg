@@ -1,49 +1,91 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="60 -165 1080 1080" role="img" aria-label="Chat requests pass through a gate before reaching a GPU inside one machine boundary">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="60 -165 1080 1080" role="img" aria-label="A team's prompts and files go to a chat page, a model and a data store that all sit inside their own cloud account or server, instead of a third-party AI cloud">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#f0f5fa"/></linearGradient>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ff8a00"/><stop offset=".5" stop-color="#ffcf1a"/><stop offset="1" stop-color="#00c2ff"/></linearGradient>
-    <radialGradient id="halo" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#ff8a00" stop-opacity=".18"/><stop offset="1" stop-color="#ff8a00" stop-opacity="0"/></radialGradient>
+    <!-- user-space, so it also paints the straight horizontal and vertical strokes -->
+    <linearGradient id="g" gradientUnits="userSpaceOnUse" x1="190" y1="0" x2="1110" y2="0"><stop offset="0" stop-color="#ff8a00"/><stop offset=".5" stop-color="#ffcf1a"/><stop offset="1" stop-color="#00c2ff"/></linearGradient>
+    <radialGradient id="halo" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#ff8a00" stop-opacity=".16"/><stop offset="1" stop-color="#ff8a00" stop-opacity="0"/></radialGradient>
     <radialGradient id="halo2" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#00c2ff" stop-opacity=".2"/><stop offset="1" stop-color="#00c2ff" stop-opacity="0"/></radialGradient>
-    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#0a2540" stroke-opacity=".05"/></pattern>
   </defs>
   <rect x="0" y="-225" width="1200" height="1200" fill="url(#bg)"/>
-  <rect x="0" y="-225" width="1200" height="1200" fill="url(#grid)"/>
-  <circle cx="320" cy="360" r="260" fill="url(#halo)"/>
-  <circle cx="900" cy="380" r="260" fill="url(#halo2)"/>
-  <!-- machine boundary -->
-  <rect x="470" y="130" width="620" height="490" rx="28" fill="#fff" fill-opacity=".6" stroke="#0a2540" stroke-opacity=".18" stroke-width="2" stroke-dasharray="10 10"/>
-  <text x="500" y="168" font-family="SUSE Mono, Menlo, monospace" font-size="15" letter-spacing="3" fill="#6b7c93">A MACHINE YOU CONTROL</text>
+  <circle cx="230" cy="440" r="260" fill="url(#halo)"/>
+  <circle cx="820" cy="380" r="340" fill="url(#halo2)"/>
+
+  <!-- the path not taken: someone else's AI cloud -->
+  <path d="M150 200a38 38 0 0 1 4-75a52 52 0 0 1 100-12a46 46 0 0 1 30 87Z" fill="#f6f9fc" stroke="#aab4c4" stroke-width="2.5" stroke-dasharray="7 7" stroke-linejoin="round"/>
+  <text x="213" y="152" text-anchor="middle" font-family="SUSE, system-ui, sans-serif" font-size="42" font-weight="600" fill="#aab4c4">?</text>
+  <text x="213" y="183" text-anchor="middle" font-family="SUSE Mono, Menlo, monospace" font-size="13" letter-spacing="2" fill="#8794a8">THIRD-PARTY AI</text>
+  <path d="M250 305V201" fill="none" stroke="#aab4c4" stroke-width="2.5" stroke-dasharray="7 7" stroke-linecap="round"/>
+  <circle cx="250" cy="253" r="14" fill="#fff" stroke="#e25950" stroke-width="2.5"/>
+  <path d="M244 247l12 12M256 247l-12 12" stroke="#e25950" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- your boundary: the cloud account or the server you own -->
+  <rect x="440" y="90" width="670" height="575" rx="28" fill="#fff" fill-opacity=".72" stroke="url(#g)" stroke-width="3"/>
+  <text x="474" y="132" font-family="SUSE Mono, Menlo, monospace" font-size="15" letter-spacing="3" fill="#425466">YOUR CLOUD ACCOUNT · OR YOUR OWN SERVER</text>
+  <text x="474" y="164" font-family="SUSE, system-ui, sans-serif" font-size="18" fill="#6b7c93">The model runs here. Nothing leaves.</text>
+
   <!-- people -->
   <g fill="none" stroke="#0a2540" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-    <circle cx="180" cy="250" r="22"/><path d="M135 320c0-28 20-46 45-46s45 18 45 46"/>
-    <circle cx="180" cy="375" r="22"/><path d="M135 445c0-28 20-46 45-46s45 18 45 46"/>
-    <circle cx="180" cy="500" r="22"/><path d="M135 570c0-28 20-46 45-46s45 18 45 46"/>
+    <circle cx="130" cy="310" r="22"/><path d="M85 380c0-28 20-46 45-46s45 18 45 46"/>
+    <circle cx="130" cy="430" r="22"/><path d="M85 500c0-28 20-46 45-46s45 18 45 46"/>
+    <circle cx="130" cy="550" r="22"/><path d="M85 620c0-28 20-46 45-46s45 18 45 46"/>
   </g>
-  <!-- chat bubbles -->
+  <!-- what they send: a contract, a codebase, a customer export -->
   <g fill="#fff" stroke="#0a2540" stroke-opacity=".25" stroke-width="2">
-    <rect x="240" y="245" width="130" height="44" rx="14"/><rect x="240" y="370" width="150" height="44" rx="14"/><rect x="240" y="495" width="110" height="44" rx="14"/>
+    <rect x="190" y="305" width="125" height="44" rx="14"/><rect x="190" y="425" width="145" height="44" rx="14"/><rect x="190" y="545" width="110" height="44" rx="14"/>
   </g>
-  <g fill="#c0c5d8"><circle cx="268" cy="267" r="4"/><circle cx="288" cy="267" r="4"/><circle cx="308" cy="267" r="4"/><circle cx="268" cy="392" r="4"/><circle cx="288" cy="392" r="4"/><circle cx="308" cy="392" r="4"/><circle cx="328" cy="392" r="4"/><circle cx="268" cy="517" r="4"/><circle cx="288" cy="517" r="4"/></g>
-  <!-- streams to gate -->
+  <g fill="none" stroke="#0a2540" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M207 316h9l5 5v17h-14zM216 316v5h5M210.500 328h7M210.500 333h7"/>
+    <path d="M212 440l-6 7 6 7M224 440l6 7-6 7M220 438l-4 18"/>
+    <path d="M206 558h18v18h-18zM206 564h18M206 570h18M212 558v18M218 558v18"/>
+  </g>
+  <g stroke="#c0c5d8" stroke-width="6" stroke-linecap="round">
+    <path d="M236 321h60M236 334h38"/>
+    <path d="M246 441h70M246 454h46"/>
+    <path d="M238 561h44M238 574h28"/>
+  </g>
+  <!-- streams to the front door, then on to the model and the data -->
   <g fill="none" stroke="url(#g)" stroke-width="3" stroke-linecap="round">
-    <path d="M390 267 C450 267 460 375 540 375"/>
-    <path d="M410 392 C460 392 470 375 540 375"/>
-    <path d="M370 517 C450 517 470 375 540 375"/>
+    <path d="M315 327C375 327 360 430 414 430"/>
+    <path d="M335 447C375 447 380 430 414 430"/>
+    <path d="M300 567C375 567 355 430 414 430"/>
+    <path d="M466 430H495"/>
+    <path d="M695 405C760 405 750 250 818 250"/>
+    <path d="M695 455C770 455 780 500 870 500"/>
   </g>
-  <!-- gate: a shield with a keyhole -->
-  <path d="M600 290 L660 268 L720 290 V372 C720 420 680 450 660 460 C640 450 600 420 600 372 Z" fill="#fff" stroke="url(#g)" stroke-width="5" stroke-linejoin="round"/>
-  <circle cx="660" cy="352" r="14" fill="none" stroke="#0a2540" stroke-width="4"/><path d="M660 366v30" stroke="#0a2540" stroke-width="4" stroke-linecap="round"/>
-  <text x="660" y="500" text-anchor="middle" font-family="SUSE, system-ui, sans-serif" font-size="16" font-weight="600" letter-spacing="2" fill="#425466">ACCOUNTS · GROUPS · KEYS</text>
-  <!-- gate to gpu -->
-  <path d="M722 375 H820" fill="none" stroke="url(#g)" stroke-width="3" stroke-linecap="round"/>
-  <!-- gpu chip -->
-  <g transform="translate(830 290)">
+  <!-- the front door, on the boundary -->
+  <circle cx="440" cy="430" r="26" fill="#fff" stroke="url(#g)" stroke-width="3"/>
+  <g fill="none" stroke="#0a2540" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="429" y="427" width="22" height="17" rx="4"/><path d="M433 427v-6a7 7 0 0 1 14 0v6"/>
+  </g>
+  <text x="440" y="484" text-anchor="middle" font-family="SUSE Mono, Menlo, monospace" font-size="13" letter-spacing="2" fill="#6b7c93" stroke="#fff" stroke-width="7" stroke-linejoin="round" paint-order="stroke">HTTPS</text>
+
+  <!-- the chat page -->
+  <rect x="495" y="330" width="200" height="200" rx="14" fill="#fff" stroke="#0a2540" stroke-width="3"/>
+  <path d="M495 362h200" stroke="#0a2540" stroke-opacity=".2" stroke-width="2"/>
+  <g fill="#c0c5d8"><circle cx="515" cy="346" r="4"/><circle cx="529" cy="346" r="4"/><circle cx="543" cy="346" r="4"/></g>
+  <rect x="511" y="378" width="104" height="26" rx="10" fill="#eef2f7"/>
+  <rect x="567" y="414" width="112" height="26" rx="10" fill="#ffe9c7"/>
+  <rect x="511" y="450" width="136" height="26" rx="10" fill="#eef2f7"/>
+  <rect x="511" y="490" width="168" height="24" rx="12" fill="none" stroke="#c0c5d8" stroke-width="2"/>
+  <text x="595" y="566" text-anchor="middle" font-family="SUSE, system-ui, sans-serif" font-size="16" font-weight="600" letter-spacing="2" fill="#425466">OPEN WEBUI</text>
+
+  <!-- the AI engine -->
+  <g transform="translate(840 165)">
     <rect x="0" y="0" width="200" height="170" rx="16" fill="#fff" stroke="#0a2540" stroke-width="3"/>
-    <rect x="40" y="35" width="120" height="100" rx="10" fill="none" stroke="url(#g)" stroke-width="4"/>
     <g stroke="#0a2540" stroke-width="3" stroke-linecap="round" stroke-opacity=".5">
       <path d="M70 0v-22M100 0v-22M130 0v-22M70 170v22M100 170v22M130 170v22M0 60h-22M0 85h-22M0 110h-22M200 60h22M200 85h22M200 110h22"/>
     </g>
     <text x="100" y="94" text-anchor="middle" font-family="SUSE Mono, Menlo, monospace" font-size="20" font-weight="600" fill="#0a2540">GPU</text>
   </g>
-  <text x="930" y="500" text-anchor="middle" font-family="SUSE, system-ui, sans-serif" font-size="16" font-weight="600" letter-spacing="2" fill="#425466">OPEN MODELS</text>
+  <rect x="880" y="200" width="120" height="100" rx="10" fill="none" stroke="url(#g)" stroke-width="4"/>
+  <text x="940" y="394" text-anchor="middle" font-family="SUSE, system-ui, sans-serif" font-size="16" font-weight="600" letter-spacing="2" fill="#425466">OLLAMA · OPEN MODELS</text>
+
+  <!-- the data, next to the engine -->
+  <g fill="#fff" stroke="#0a2540" stroke-width="3" stroke-linejoin="round">
+    <path d="M870 450v100a70 18 0 0 0 140 0v-100"/>
+    <ellipse cx="940" cy="450" rx="70" ry="18"/>
+  </g>
+  <path d="M870 483a70 18 0 0 0 140 0M870 517a70 18 0 0 0 140 0" fill="none" stroke="#0a2540" stroke-opacity=".3" stroke-width="2.5"/>
+  <text x="940" y="604" text-anchor="middle" font-family="SUSE, system-ui, sans-serif" font-size="16" font-weight="600" letter-spacing="2" fill="#425466">PROMPTS · FILES · CHATS</text>
+  <text x="940" y="630" text-anchor="middle" font-family="SUSE, system-ui, sans-serif" font-size="16" font-weight="600" letter-spacing="2" fill="#ac5f04">STAY HERE</text>
 </svg>

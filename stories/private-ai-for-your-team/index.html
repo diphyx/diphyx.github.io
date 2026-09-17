@@ -78,7 +78,7 @@
 <li><strong>DiPhyx</strong> is the quickest way to get a GPU machine with dxflow on it: about a minute, prepaid by the hour, no cloud account.</li>
 </ul>
 <p>The hub workflow that bundles the first two is called <strong>Open UI</strong>. The rest of this post is about turning it on, on a machine you rent and on a machine you own.</p>
-<figure class="l-page"><img src="/stories/private-ai-for-your-team/cover.svg" alt="" width="1200" height="1200"><figcaption>Every request reaches the GPU through one gate: accounts, groups and per-model permissions in Open WebUI, on a machine you control.</figcaption></figure>
+<figure class="l-page"><img src="/stories/private-ai-for-your-team/cover.svg" alt="" width="1200" height="1200"><figcaption>Prompts, files and chats land where the model runs: in your own cloud account or on your own server, not on a third party&#39;s. The chat page, the model and the data all sit inside the same boundary.</figcaption></figure>
 <h2 id="what-you-get">What you get</h2>
 <p>One port, and it asks who is asking.</p>
 <p>Inside the container, Ollama listens on the loopback interface only. No port reaches it from outside. Every request arrives on the web port, where Open WebUI checks the account, the group and the model permission before anything reaches the GPU. That is the single design decision the whole workflow is built around, and it is the reason a bare Ollama server, which has no authentication at all, should never face a network on its own.</p>
